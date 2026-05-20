@@ -260,14 +260,14 @@
       <div class="card">
         <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=600&q=80" alt="Luxury Apartment">
         <h3><span lang="en">Luxury Apartment</span><span lang="my">ဇိမ်ခံကွန်ဒိုတိုက်ခန်း</span></h3>
-        <p class="price"><span lang="en">$350,000</span><span lang="my">$၃၅၀,၀၀၀</span></p>
+        <p class="price"><span lang="en">$350,000</span><span lang="my">$၃၅၀,००၀</span></p>
         <p><span lang="en">Comfortable living for modern lifestyle.</span><span lang="my">ခေတ်မီလူနေမှုပုံစံအတွက် သက်တောင့်သက်သာရှိသော နေရာ။</span></p>
       </div>
 
       <div class="card">
         <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=600&q=80" alt="Family Home">
         <h3><span lang="en">Family Home</span><span lang="my">မိသားစုနေအိမ်</span></h3>
-        <p class="price"><span lang="en">$525,000</span><span lang="my">$၅၂၅,၀၀၀</span></p>
+        <p class="price"><span lang="en">$525,000</span><span lang="my">$၅၂၅,००၀</span></p>
         <p><span lang="en">Safe and peaceful environment for families.</span><span lang="my">မိသားစုများအတွက် ဘေးကင်းပြီး အေးချမ်းသာယာသော ပတ်ဝန်းကျင်။</span></p>
       </div>
 
@@ -290,7 +290,7 @@
     <p>&copy; 2026 Modern Kingdom Real Estate. <span lang="en">All Rights Reserved.</span><span lang="my">မူပိုင်ခွင့်အားလုံး ရရှိပြီး ဖြစ်သည်။</span></p>
   </footer>
 
-<script>
+  <script>
     let currentLang = 'en';
 
     function toggleLanguage() {
@@ -301,20 +301,32 @@
       if (currentLang === 'en') {
         // Switch to Burmese
         enElements.forEach(el => el.style.display = 'none');
-        myElements.forEach(el => el.style.display = 'inline-block');
+        myElements.forEach(el => {
+          if (el.tagName === 'SPAN') {
+            el.style.display = 'inline';
+          } else {
+            el.style.display = 'block';
+          }
+        });
         
         btn.innerText = 'English';
         currentLang = 'my';
       } else {
         // Switch to English
-        enElements.forEach(el => el.style.display = 'inline-block');
+        enElements.forEach(el => {
+          if (el.tagName === 'SPAN') {
+            el.style.display = 'inline';
+          } else {
+            el.style.display = 'block';
+          }
+        });
         myElements.forEach(el => el.style.display = 'none');
         
         btn.innerText = 'မြန်မာ';
         currentLang = 'en';
       }
     }
-  </script>  
+  </script>
 
 </body>
 </html>
