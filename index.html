@@ -290,7 +290,7 @@
     <p>&copy; 2026 Modern Kingdom Real Estate. <span lang="en">All Rights Reserved.</span><span lang="my">မူပိုင်ခွင့်အားလုံး ရရှိပြီး ဖြစ်သည်။</span></p>
   </footer>
 
-  <script>
+<script>
     let currentLang = 'en';
 
     function toggleLanguage() {
@@ -301,24 +301,20 @@
       if (currentLang === 'en') {
         // Switch to Burmese
         enElements.forEach(el => el.style.display = 'none');
-        myElements.forEach(el => el.style.display = 'block');
-        // Inline elements fix (like spans inside headers)
-        document.querySelectorAll('span[lang="my"]').forEach(el => el.style.display = 'inline');
+        myElements.forEach(el => el.style.display = 'inline-block');
         
         btn.innerText = 'English';
         currentLang = 'my';
       } else {
         // Switch to English
-        enElements.forEach(el => el.style.display = 'block');
+        enElements.forEach(el => el.style.display = 'inline-block');
         myElements.forEach(el => el.style.display = 'none');
-        // Inline elements fix
-        document.querySelectorAll('span[lang="en"]').forEach(el => el.style.display = 'inline');
         
         btn.innerText = 'မြန်မာ';
         currentLang = 'en';
       }
     }
-  </script>
+  </script>  
 
 </body>
 </html>
