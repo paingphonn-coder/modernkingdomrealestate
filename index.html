@@ -402,7 +402,7 @@
                         <span lang="my">ပြည်နယ် / တိုင်း</span>
                     </label>
                     <select id="regionField" required>
-                        <option value="" disabled selected>Select Region...</option>
+                        <option value="" disabled selected id="optSelectRegion">Select Region...</option>
                     </select>
                 </div>
 
@@ -412,7 +412,7 @@
                         <span lang="my">မြို့ကြီးများ</span>
                     </label>
                     <select id="cityField" disabled required>
-                        <option value="" disabled selected>Select Region First</option>
+                        <option value="" disabled selected id="optSelectCity">Select Region First</option>
                     </select>
                 </div>
 
@@ -457,7 +457,7 @@
 
     <div class="grid" id="propertyGrid">
         
-        <div class="property-card" data-city="yangon">
+        <div class="property-card" data-region="Yangon Region" data-city="yangon" data-township="kamayut">
             <span class="badge new" lang="en">New</span>
             <span class="badge new" lang="my">အသစ်</span>
             <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=600&q=80" alt="Office Space">
@@ -486,7 +486,7 @@
             </div>
         </div>
 
-        <div class="property-card" data-city="yangon">
+        <div class="property-card" data-region="Yangon Region" data-city="yangon" data-township="yankin">
             <span class="badge hot" lang="en">Hot</span>
             <span class="badge hot" lang="my">အဝယ်လိုက်</span>
             <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=600&q=80" alt="Apartment">
@@ -515,7 +515,7 @@
             </div>
         </div>
 
-        <div class="property-card" data-city="yangon">
+        <div class="property-card" data-region="Yangon Region" data-city="yangon" data-township="bahan">
             <span class="badge scenic" lang="en">Scenic</span>
             <span class="badge scenic" lang="my">ရှုခင်းလှ</span>
             <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80" alt="Bahan Villa">
@@ -544,7 +544,7 @@
             </div>
         </div>
 
-        <div class="property-card" data-city="yangon">
+        <div class="property-card" data-region="Yangon Region" data-city="yangon" data-township="insein">
             <span class="badge hot" lang="en">Hot</span>
             <span class="badge hot" lang="my">အဝယ်လိုက်</span>
             <img src="https://images.unsplash.com/photo-1512915922686-57c11dde9b6b?auto=format&fit=crop&w=600&q=80" alt="Insein Condo">
@@ -573,7 +573,7 @@
             </div>
         </div>
 
-        <div class="property-card" data-city="yangon">
+        <div class="property-card" data-region="Yangon Region" data-city="yangon" data-township="hlaing">
             <span class="badge new" lang="en">New</span>
             <span class="badge new" lang="my">အသစ်</span>
             <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=600&q=80" alt="Hlaing Studio">
@@ -602,7 +602,7 @@
             </div>
         </div>
 
-        <div class="property-card" data-city="yangon">
+        <div class="property-card" data-region="Yangon Region" data-city="yangon" data-township="thingangyun">
             <span class="badge scenic" lang="en">Scenic</span>
             <span class="badge scenic" lang="my">ရှုခင်းလှ</span>
             <img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=600&q=80" alt="Thuwunna Penthouse">
@@ -631,7 +631,7 @@
             </div>
         </div>
 
-        <div class="property-card" data-city="mandalay">
+        <div class="property-card" data-region="Mandalay Region" data-city="mandalay" data-township="chanayethazan">
             <span class="badge new" lang="en">New</span>
             <span class="badge new" lang="my">အသစ်</span>
             <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=600&q=80" alt="Smart Home">
@@ -660,7 +660,7 @@
             </div>
         </div>
 
-        <div class="property-card" data-city="naypyitaw">
+        <div class="property-card" data-region="Naypyidaw Union Territory" data-city="naypyitaw" data-township="ottarathiri">
             <span class="badge new" lang="en">New</span>
             <span class="badge new" lang="my">အသစ်</span>
             <img src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&w=600&q=80" alt="Luxury Villa">
@@ -689,7 +689,7 @@
             </div>
         </div>
 
-        <div class="property-card" data-city="taunggyi">
+        <div class="property-card" data-region="Shan State" data-city="taunggyi" data-township="inle">
             <span class="badge scenic" lang="en">Scenic</span>
             <span class="badge scenic" lang="my">ရှုခင်းလှ</span>
             <img src="https://images.unsplash.com/photo-1506974210756-8e1b8985d348?auto=format&fit=crop&w=600&q=80" alt="Mountain House">
@@ -718,7 +718,7 @@
             </div>
         </div>
 
-        <div class="property-card" data-city="taunggyi">
+        <div class="property-card" data-region="Shan State" data-city="taunggyi" data-township="ridge">
             <span class="badge new" lang="en">New</span>
             <span class="badge new" lang="my">အသစ်</span>
             <img src="https://images.unsplash.com/photo-1580587771525-78b9dba3b914?auto=format&fit=crop&w=600&q=80" alt="Hillside Mansion">
@@ -747,7 +747,7 @@
             </div>
         </div>
 
-        <div class="property-card" data-city="taunggyi">
+        <div class="property-card" data-region="Shan State" data-city="taunggyi" data-township="cherry">
             <span class="badge hot" lang="en">Hot</span>
             <span class="badge hot" lang="my">အဝယ်လိုက်</span>
             <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=600&q=80" alt="Taunggyi Modern Bungalow">
@@ -776,7 +776,7 @@
             </div>
         </div>
 
-        <div class="property-card" data-city="taunggyi">
+        <div class="property-card" data-region="Shan State" data-city="taunggyi" data-township="inle">
             <span class="badge scenic" lang="en">Scenic</span>
             <span class="badge scenic" lang="my">ရှုခင်းလှ</span>
             <img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=600&q=80" alt="Inle Resort Villa">
@@ -805,7 +805,7 @@
             </div>
         </div>
 
-        <div class="property-card" data-city="taunggyi">
+        <div class="property-card" data-region="Shan State" data-city="taunggyi" data-township="center">
             <span class="badge new" lang="en">New</span>
             <span class="badge new" lang="my">အသစ်</span>
             <img src="https://images.unsplash.com/photo-1602941525421-8f8b81d3edbb?auto=format&fit=crop&w=600&q=80" alt="Taunggyi Modern Cottage">
@@ -834,7 +834,7 @@
             </div>
         </div>
 
-        <div class="property-card" data-city="taunggyi">
+        <div class="property-card" data-region="Shan State" data-city="taunggyi" data-township="shan hills">
             <span class="badge hot" lang="en">Hot</span>
             <span class="badge hot" lang="my">အဝယ်လိုက်</span>
             <img src="https://images.unsplash.com/photo-1613977257363-707ba9348227?auto=format&fit=crop&w=600&q=80" alt="Shan Hills Estate">
@@ -870,7 +870,7 @@
             <h2 class="section-title" lang="en">About Modern Kingdom</h2>
             <h2 class="section-title" lang="my">Modern Kingdom အကြောင်း</h2>
             <p lang="en">We are dedicated to connecting buyers and investors with exceptional premium real estate opportunities across Myanmar's major economic hubs.</p>
-            <p lang="my">ကျွန်ုပ်တို့သည် ဝယ်ယူသူများနှင့် ရင်းနှီးမြှုပ်နှံသူများကို မြန်မာနိုင်ငံတစ်ဝှမ်းရှိ အဓိကစီးပွားရေးမြို့ကြီးများမှ အကောင်းမွန်ဆုံးသော အိမ်ခြံမြေအခွင့်အလမ်းများနှင့် ချဆက်ပေးနေပါသည်။</p>
+            <p lang="my">ကျွန်ုပ်တို့သည် ဝယ်ယူသူများနှင့် ရင်းနှီးမြှုပ်နှံသူများကို မြန်မာနိုင်ငံတစ်ဝှမ်းရှိ အဓိကစီးပွားရေးမြို့ကြီးများမှ အကောင်းမွန်ဆုံးသော အိမ်ခြံမြေအခွင့်အလမ်းများနှင့် ချိတ်ဆက်ပေးနေပါသည်။</p>
         </div>
     </section>
 
@@ -917,12 +917,20 @@
                 const selectedRegion = e.target.value;
                 const relatedCities = myanmarLocationsDB[selectedRegion];
 
-                cityDropdown.innerHTML = '<option value="" disabled selected>Select City/Town...</option>';
+                cityDropdown.innerHTML = '';
+                const defaultCityOpt = document.createElement("option");
+                defaultCityOpt.value = "";
+                defaultCityOpt.disabled = true;
+                defaultCityOpt.selected = true;
+                defaultCityOpt.id = "optSelectCity";
+                defaultCityOpt.textContent = currentLang === 'en' ? "Select City/Town..." : "မြို့ရွေးချယ်ရန်...";
+                cityDropdown.appendChild(defaultCityOpt);
+                
                 cityDropdown.disabled = false;
 
                 relatedCities.forEach(city => {
                     const opt = document.createElement("option");
-                    opt.value = city;
+                    opt.value = city.toLowerCase();
                     opt.textContent = city;
                     cityDropdown.appendChild(opt);
                 });
@@ -936,19 +944,21 @@
             const selectedCity = document.getElementById("cityField").value.toLowerCase();
             const neighborhoodInput = document.getElementById("neighborhoodField").value.toLowerCase();
 
-            // Clear active styles on main page layout buttons to prioritize deeper filtering queries
             const buttons = document.querySelectorAll('.filter-btn');
             buttons.forEach(btn => btn.classList.remove('active'));
             document.querySelector('[data-city-btn="all"]').classList.add('active');
 
             const cards = document.querySelectorAll('.property-card');
             cards.forEach(card => {
-                const cardText = card.textContent.toLowerCase();
-                const fitsRegion = cardText.includes(selectedRegion);
-                const fitsCity = cardText.includes(selectedCity);
-                const fitsNeighborhood = cardText.includes(neighborhoodInput);
+                const cardRegion = (card.getAttribute('data-region') || '').toLowerCase();
+                const cardCity = (card.getAttribute('data-city') || '').toLowerCase();
+                const cardTownship = (card.getAttribute('data-township') || '').toLowerCase();
 
-                if (fitsRegion || fitsCity || fitsNeighborhood) {
+                const matchesRegion = cardRegion.includes(selectedRegion);
+                const matchesCity = cardCity === selectedCity;
+                const matchesTownship = cardTownship.includes(neighborhoodInput) || neighborhoodInput === "";
+
+                if (matchesRegion && matchesCity && matchesTownship) {
                     card.style.removeProperty('display');
                 } else {
                     card.style.display = 'none';
@@ -1035,6 +1045,9 @@
             const enElements = document.querySelectorAll('[lang="en"]');
             const myElements = document.querySelectorAll('[lang="my"]');
             const langBtn = document.querySelector('.lang-switch-btn');
+            const neighborhoodField = document.getElementById('neighborhoodField');
+            const optSelectRegion = document.getElementById('optSelectRegion');
+            const optSelectCity = document.getElementById('optSelectCity');
 
             if (currentLang === 'en') {
                 enElements.forEach(el => el.style.display = 'none');
@@ -1053,6 +1066,14 @@
                         el.style.display = 'block';
                     }
                 });
+
+                // Translate Dropdowns & Placeholders to Myanmar
+                if(neighborhoodField) neighborhoodField.placeholder = "ဥပမာ - ကမာရွတ်မြို့နယ်";
+                if(optSelectRegion && optSelectRegion.selected) optSelectRegion.textContent = "ပြည်နယ်/တိုင်း ရွေးချယ်ရန်...";
+                if(optSelectCity && optSelectCity.selected) {
+                    optSelectCity.textContent = document.getElementById('regionField').value ? "မြို့ရွေးချယ်ရန်..." : "ပြည်နယ်/တိုင်း အရင်ရွေးပါ";
+                }
+
                 langBtn.textContent = 'English';
                 currentLang = 'my';
             } else {
@@ -1072,6 +1093,14 @@
                         el.style.display = 'block';
                     }
                 });
+
+                // Translate Dropdowns & Placeholders to English
+                if(neighborhoodField) neighborhoodField.placeholder = "e.g., Kamayut Township";
+                if(optSelectRegion && optSelectRegion.selected) optSelectRegion.textContent = "Select Region...";
+                if(optSelectCity && optSelectCity.selected) {
+                    optSelectCity.textContent = document.getElementById('regionField').value ? "Select City/Town..." : "Select Region First";
+                }
+
                 langBtn.textContent = 'မြန်မာ';
                 currentLang = 'en';
             }
