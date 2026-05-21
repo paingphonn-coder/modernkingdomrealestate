@@ -69,14 +69,14 @@
 
         /* HERO SEARCH SECTION */
         header {
-            min-height: 65vh;
+            min-height: 75vh;
             background: linear-gradient(rgba(15, 23, 42, 0.6), rgba(15, 23, 42, 0.6)), url('https://images.unsplash.com/photo-1564013799919-ab600027ffc6?auto=format&fit=crop&w=1920&q=80') no-repeat center center / cover;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
-            padding: 2rem 1rem;
+            padding: 3rem 1rem;
         }
         header h1 {
             font-size: 2.75rem;
@@ -93,7 +93,7 @@
         /* DYNAMIC ADVANCED FILTER CONTAINER */
         .search-container {
             background: #ffffff;
-            padding: 1.5rem;
+            padding: 1.75rem;
             border-radius: 16px;
             width: 100%;
             max-width: 850px;
@@ -101,13 +101,34 @@
         }
         .filter-form {
             display: grid;
-            grid-template-columns: 1fr 1fr 1fr auto;
-            gap: 1rem;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.25rem;
             align-items: flex-end;
+        }
+        .filter-form button.search-btn {
+            grid-column: span 2;
+            width: 100%;
+            background: #ff5a5f;
+            color: white;
+            border: none;
+            padding: 0.75rem 2rem;
+            font-size: 1rem;
+            font-weight: bold;
+            border-radius: 8px;
+            cursor: pointer;
+            height: 46px;
+            margin-top: 0.5rem;
+            transition: background 0.2s;
+        }
+        .filter-form button.search-btn:hover {
+            background: #e04b50;
         }
         @media (max-width: 768px) {
             .filter-form {
                 grid-template-columns: 1fr;
+            }
+            .filter-form button.search-btn {
+                grid-column: span 1;
             }
         }
         .form-group {
@@ -122,6 +143,8 @@
             text-transform: uppercase;
             letter-spacing: 0.5px;
             color: #64748b;
+            display: flex;
+            justify-content: space-between;
         }
         .form-group select, .form-group input {
             width: 100%;
@@ -142,20 +165,9 @@
             color: #94a3b8;
             cursor: not-allowed;
         }
-        .search-container button.search-btn {
-            background: #ff5a5f;
-            color: white;
-            border: none;
-            padding: 0.75rem 2rem;
-            font-size: 1rem;
-            font-weight: bold;
-            border-radius: 8px;
+        .form-group input[type="range"] {
+            padding: 0.5rem 0;
             cursor: pointer;
-            height: 46px;
-            transition: background 0.2s;
-        }
-        .search-container button.search-btn:hover {
-            background: #e04b50;
         }
 
         /* CITY FILTER SYSTEM STYLES */
@@ -425,6 +437,14 @@
                     <input type="text" id="neighborhoodField" placeholder="e.g., Kamayut Township">
                 </div>
 
+                <div class="form-group">
+                    <label>
+                        <span lang="en">Max Price: $<span id="priceDisplay">1,200,000</span></span>
+                        <span lang="my">အမြင့်ဆုံးစျေးနှုန်း: $<span id="priceDisplayMy">1,200,000</span></span>
+                    </label>
+                    <input type="range" id="priceRangeField" min="50000" max="1200000" step="25000" value="1200000" oninput="updatePriceSliderDisplay(this.value)">
+                </div>
+
                 <button type="submit" class="search-btn">
                     <span lang="en">Search</span>
                     <span lang="my">ရှာဖွေရန်</span>
@@ -458,7 +478,7 @@
 
     <div class="grid" id="propertyGrid">
         
-        <div class="property-card" data-region="Yangon Region" data-city="yangon" data-township="kamayut">
+        <div class="property-card" data-region="Yangon Region" data-city="yangon" data-township="kamayut" data-price="135000">
             <span class="badge new" lang="en">New</span>
             <span class="badge new" lang="my">အသစ်</span>
             <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=600&q=80" alt="Office Space">
@@ -487,7 +507,7 @@
             </div>
         </div>
 
-        <div class="property-card" data-region="Yangon Region" data-city="yangon" data-township="yankin">
+        <div class="property-card" data-region="Yangon Region" data-city="yangon" data-township="yankin" data-price="350000">
             <span class="badge hot" lang="en">Hot</span>
             <span class="badge hot" lang="my">အဝယ်လိုက်</span>
             <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=600&q=80" alt="Apartment">
@@ -516,7 +536,7 @@
             </div>
         </div>
 
-        <div class="property-card" data-region="Yangon Region" data-city="yangon" data-township="bahan">
+        <div class="property-card" data-region="Yangon Region" data-city="yangon" data-township="bahan" data-price="1200000">
             <span class="badge scenic" lang="en">Scenic</span>
             <span class="badge scenic" lang="my">ရှုခင်းလှ</span>
             <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80" alt="Bahan Villa">
@@ -545,7 +565,7 @@
             </div>
         </div>
 
-        <div class="property-card" data-region="Yangon Region" data-city="yangon" data-township="insein">
+        <div class="property-card" data-region="Yangon Region" data-city="yangon" data-township="insein" data-price="185000">
             <span class="badge hot" lang="en">Hot</span>
             <span class="badge hot" lang="my">အဝယ်လိုက်</span>
             <img src="https://images.unsplash.com/photo-1512915922686-57c11dde9b6b?auto=format&fit=crop&w=600&q=80" alt="Insein Condo">
@@ -574,7 +594,7 @@
             </div>
         </div>
 
-        <div class="property-card" data-region="Yangon Region" data-city="yangon" data-township="hlaing">
+        <div class="property-card" data-region="Yangon Region" data-city="yangon" data-township="hlaing" data-price="95000">
             <span class="badge new" lang="en">New</span>
             <span class="badge new" lang="my">အသစ်</span>
             <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=600&q=80" alt="Hlaing Studio">
@@ -603,7 +623,7 @@
             </div>
         </div>
 
-        <div class="property-card" data-region="Yangon Region" data-city="yangon" data-township="thingangyun">
+        <div class="property-card" data-region="Yangon Region" data-city="yangon" data-township="thingangyun" data-price="480000">
             <span class="badge scenic" lang="en">Scenic</span>
             <span class="badge scenic" lang="my">ရှုခင်းလှ</span>
             <img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=600&q=80" alt="Thuwunna Penthouse">
@@ -632,7 +652,7 @@
             </div>
         </div>
 
-        <div class="property-card" data-region="Mandalay Region" data-city="mandalay" data-township="chanayethazan">
+        <div class="property-card" data-region="Mandalay Region" data-city="mandalay" data-township="chanayethazan" data-price="525000">
             <span class="badge new" lang="en">New</span>
             <span class="badge new" lang="my">အသစ်</span>
             <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=600&q=80" alt="Smart Home">
@@ -661,7 +681,7 @@
             </div>
         </div>
 
-        <div class="property-card" data-region="Naypyidaw Union Territory" data-city="naypyitaw" data-township="ottarathiri">
+        <div class="property-card" data-region="Naypyidaw Union Territory" data-city="naypyitaw" data-township="ottarathiri" data-price="420000">
             <span class="badge new" lang="en">New</span>
             <span class="badge new" lang="my">အသစ်</span>
             <img src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&w=600&q=80" alt="Luxury Villa">
@@ -690,7 +710,7 @@
             </div>
         </div>
 
-        <div class="property-card" data-region="Shan State" data-city="taunggyi" data-township="inle">
+        <div class="property-card" data-region="Shan State" data-city="taunggyi" data-township="inle" data-price="280000">
             <span class="badge scenic" lang="en">Scenic</span>
             <span class="badge scenic" lang="my">ရှုခင်းလှ</span>
             <img src="https://images.unsplash.com/photo-1506974210756-8e1b8985d348?auto=format&fit=crop&w=600&q=80" alt="Mountain House">
@@ -719,7 +739,7 @@
             </div>
         </div>
 
-        <div class="property-card" data-region="Shan State" data-city="taunggyi" data-township="ridge">
+        <div class="property-card" data-region="Shan State" data-city="taunggyi" data-township="ridge" data-price="610000">
             <span class="badge new" lang="en">New</span>
             <span class="badge new" lang="my">အသစ်</span>
             <img src="https://images.unsplash.com/photo-1580587771525-78b9dba3b914?auto=format&fit=crop&w=600&q=80" alt="Hillside Mansion">
@@ -748,7 +768,7 @@
             </div>
         </div>
 
-        <div class="property-card" data-region="Shan State" data-city="taunggyi" data-township="cherry">
+        <div class="property-card" data-region="Shan State" data-city="taunggyi" data-township="cherry" data-price="320000">
             <span class="badge hot" lang="en">Hot</span>
             <span class="badge hot" lang="my">အဝယ်လိုက်</span>
             <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=600&q=80" alt="Taunggyi Modern Bungalow">
@@ -777,7 +797,7 @@
             </div>
         </div>
 
-        <div class="property-card" data-region="Shan State" data-city="taunggyi" data-township="inle">
+        <div class="property-card" data-region="Shan State" data-city="taunggyi" data-township="inle" data-price="450000">
             <span class="badge scenic" lang="en">Scenic</span>
             <span class="badge scenic" lang="my">ရှုခင်းလှ</span>
             <img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=600&q=80" alt="Inle Resort Villa">
@@ -806,7 +826,7 @@
             </div>
         </div>
 
-        <div class="property-card" data-region="Shan State" data-city="taunggyi" data-township="center">
+        <div class="property-card" data-region="Shan State" data-city="taunggyi" data-township="center" data-price="195000">
             <span class="badge new" lang="en">New</span>
             <span class="badge new" lang="my">အသစ်</span>
             <img src="https://images.unsplash.com/photo-1602941525421-8f8b81d3edbb?auto=format&fit=crop&w=600&q=80" alt="Taunggyi Modern Cottage">
@@ -835,7 +855,7 @@
             </div>
         </div>
 
-        <div class="property-card" data-region="Shan State" data-city="taunggyi" data-township="shan hills">
+        <div class="property-card" data-region="Shan State" data-city="taunggyi" data-township="shan hills" data-price="720000">
             <span class="badge hot" lang="en">Hot</span>
             <span class="badge hot" lang="my">အဝယ်လိုက်</span>
             <img src="https://images.unsplash.com/photo-1613977257363-707ba9348227?auto=format&fit=crop&w=600&q=80" alt="Shan Hills Estate">
@@ -907,7 +927,6 @@
             const cityDropdown = document.getElementById("cityField");
 
             if (regionDropdown) {
-                // Seed administrative states/regions options dynamically
                 Object.keys(myanmarLocationsDB).forEach(region => {
                     const opt = document.createElement("option");
                     opt.value = region;
@@ -915,7 +934,6 @@
                     regionDropdown.appendChild(opt);
                 });
 
-                // Set up dependency updates when changing region values
                 regionDropdown.addEventListener("change", (e) => {
                     const selectedRegion = e.target.value;
                     const relatedCities = myanmarLocationsDB[selectedRegion];
@@ -944,31 +962,44 @@
             }
         });
 
-        // FORM SEARCH DISPATCH MATRIX
+        // LIVE PRICE SLIDER DISPLAY TRACKER
+        function updatePriceSliderDisplay(val) {
+            const formattedVal = Number(val).toLocaleString();
+            document.getElementById('priceDisplay').textContent = formattedVal;
+            document.getElementById('priceDisplayMy').textContent = formattedVal;
+            
+            // Execute automated filter mapping across all parameters
+            evaluateLiveFilters();
+        }
+
+        // UNIFIED SEARCH ENGINE MATRIX Evaluates multi-layered criteria natively
         function executeLocationSearch(event) {
-            event.preventDefault();
-            const selectedRegion = document.getElementById("regionField").value.toLowerCase();
-            const selectedCity = document.getElementById("cityField").value.toLowerCase();
+            if (event) event.preventDefault();
+            evaluateLiveFilters();
+        }
+
+        function evaluateLiveFilters() {
+            const regionDropdown = document.getElementById("regionField");
+            const cityDropdown = document.getElementById("cityField");
+
+            const selectedRegion = regionDropdown ? regionDropdown.value.toLowerCase() : "";
+            const selectedCity = cityDropdown ? cityDropdown.value.toLowerCase() : "";
             const neighborhoodInput = document.getElementById("neighborhoodField").value.toLowerCase().trim();
+            const maxPriceSelected = parseInt(document.getElementById("priceRangeField").value) || 1200000;
 
-            // Clear visual focus states from lower-level static pill buttons
-            const buttons = document.querySelectorAll('.filter-btn');
-            buttons.forEach(btn => btn.classList.remove('active'));
-            const allBtn = document.querySelector('[data-city-btn="all"]');
-            if (allBtn) allBtn.classList.add('active');
-
-            // Evaluate database matching metrics on all visual objects
             const cards = document.querySelectorAll('.property-card');
             cards.forEach(card => {
                 const cardRegion = (card.getAttribute('data-region') || '').toLowerCase();
                 const cardCity = (card.getAttribute('data-city') || '').toLowerCase();
                 const cardTownship = (card.getAttribute('data-township') || '').toLowerCase();
+                const cardPrice = parseInt(card.getAttribute('data-price')) || 0;
 
-                const matchesRegion = cardRegion.includes(selectedRegion);
-                const matchesCity = cardCity === selectedCity;
+                const matchesRegion = selectedRegion === "" || cardRegion.includes(selectedRegion);
+                const matchesCity = selectedCity === "" || cardCity === selectedCity;
                 const matchesTownship = cardTownship.includes(neighborhoodInput) || neighborhoodInput === "";
+                const matchesPrice = cardPrice <= maxPriceSelected;
 
-                if (matchesRegion && matchesCity && matchesTownship) {
+                if (matchesRegion && matchesCity && matchesTownship && matchesPrice) {
                     card.style.display = 'block';
                 } else {
                     card.style.display = 'none';
@@ -987,10 +1018,24 @@
                 }
             });
 
+            if (selectedCity === 'all') {
+                document.getElementById("searchEngineForm").reset();
+                if (document.getElementById("cityField")) document.getElementById("cityField").disabled = true;
+                updatePriceSliderDisplay(1200000);
+                document.getElementById("priceRangeField").value = 1200000;
+            }
+
+            const maxPriceSelected = parseInt(document.getElementById("priceRangeField").value) || 1200000;
             const cards = document.querySelectorAll('.property-card');
+            
             cards.forEach(card => {
                 const cardCity = (card.getAttribute('data-city') || '').toLowerCase();
-                if (selectedCity === 'all' || cardCity === selectedCity.toLowerCase()) {
+                const cardPrice = parseInt(card.getAttribute('data-price')) || 0;
+
+                const matchesCityTab = selectedCity === 'all' || cardCity === selectedCity.toLowerCase();
+                const matchesPriceLimit = cardPrice <= maxPriceSelected;
+
+                if (matchesCityTab && matchesPriceLimit) {
                     card.style.display = 'block';
                 } else {
                     card.style.display = 'none';
