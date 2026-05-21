@@ -1,433 +1,432 @@
 <!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Modern Kingdom Real Estate | Property Portal</title>
-  <style>
-    /* RESET & BASE STYLES */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Segoe UI', Pyidaungsu, Tahoma, Geneva, Verdana, sans-serif;
-    }
-    html {
-      scroll-behavior: smooth;
-    }
-    body {
-      background-color: #f8fafc;
-      color: #0f172a;
-      line-height: 1.6;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Kingdom Real Estate</title>
+    <style>
+        /* BASE STYLES */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        body {
+            background: #f8fafc;
+            color: #334155;
+        }
 
-    /* NAVIGATION */
-    nav {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      background-color: #ffffff;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 0.75rem 2rem;
-      z-index: 1000;
-    }
-    .logo {
-      font-weight: bold;
-      font-size: 1.4rem;
-      color: #1e3a8a;
-      text-decoration: none;
-    }
-    .logo span {
-      color: #fbbf24;
-    }
-    nav .nav-links a {
-      color: #475569;
-      text-decoration: none;
-      margin: 0 1rem;
-      font-weight: 500;
-      transition: color 0.3s;
-    }
-    nav .nav-links a:hover {
-      color: #1e3a8a;
-    }
-    .lang-switch-btn {
-      background: #1e3a8a;
-      color: #ffffff;
-      border: none;
-      padding: 0.4rem 1rem;
-      font-weight: 600;
-      border-radius: 6px;
-      cursor: pointer;
-      transition: background 0.3s;
-    }
-    .lang-switch-btn:hover {
-      background: #1d4ed8;
-    }
+        /* NAVIGATION BAR */
+        nav {
+            background: #ffffff;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1e3a8a;
+        }
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+            list-style: none;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: #475569;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        .nav-links a:hover {
+            color: #1e3a8a;
+        }
+        .lang-switch-btn {
+            background: #1e3a8a;
+            color: #ffffff;
+            border: none;
+            padding: 0.4rem 1rem;
+            font-weight: 600;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .lang-switch-btn:hover {
+            background: #1d4ed8;
+        }
 
-    /* FAZWAZ HERO SEARCH SECTION */
-    header {
-      height: 60vh;
-      background: linear-gradient(rgba(15, 23, 42, 0.6), rgba(15, 23, 42, 0.6)), 
-                  url('https://images.unsplash.com/photo-1564013799919-ab600027ffc6?auto=format&fit=crop&w=1920&q=80') no-repeat center center/cover;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      padding: 0 1rem;
-      margin-top: 50px;
-    }
-    header h1 {
-      font-size: 2.75rem;
-      color: #ffffff;
-      margin-bottom: 0.5rem;
-      font-weight: 700;
-    }
-    header p {
-      font-size: 1.15rem;
-      color: #e2e8f0;
-      margin-bottom: 2rem;
-    }
-    
-    /* FAZWAZ SEARCH BAR COMPONENT */
-    .search-container {
-      background: #ffffff;
-      padding: 0.5rem;
-      border-radius: 50px;
-      display: flex;
-      width: 100%;
-      max-width: 700px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-    }
-    .search-container input {
-      flex: 1;
-      border: none;
-      padding: 0.75rem 1.5rem;
-      font-size: 1rem;
-      border-radius: 50px;
-      outline: none;
-    }
-    .search-container button {
-      background: #ff5a5f;
-      color: white;
-      border: none;
-      padding: 0.75rem 2rem;
-      font-size: 1rem;
-      font-weight: bold;
-      border-radius: 50px;
-      cursor: pointer;
-      transition: background 0.2s;
-    }
-    .search-container button:hover {
-      background: #e04b50;
-    }
+        /* HERO SEARCH SECTION */
+        header {
+            height: 60vh;
+            background: linear-gradient(rgba(15, 23, 42, 0.6), rgba(15, 23, 42, 0.6)), url('https://images.unsplash.com/photo-1564013799919-ab600027ffc6?auto=format&fit=crop&w=1920&q=80') no-repeat center center / cover;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 1rem;
+            margin-top: 50px;
+        }
+        header h1 {
+            font-size: 2.75rem;
+            color: #ffffff;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+        header p {
+            font-size: 1.15rem;
+            color: #e2e8f0;
+            margin-bottom: 2rem;
+        }
 
-    /* GENERAL SECTION STYLES */
-    section {
-      padding: 4rem 2rem;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-    .section-title {
-      font-size: 1.75rem;
-      color: #1e293b;
-      margin-bottom: 1.5rem;
-      font-weight: 700;
-    }
+        /* SEARCH BAR COMPONENT */
+        .search-container {
+            background: #ffffff;
+            padding: 0.5rem;
+            border-radius: 50px;
+            display: flex;
+            width: 100%;
+            max-width: 700px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+        .search-container input {
+            flex: 1;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            font-size: 1rem;
+            border-radius: 50px;
+            outline: none;
+        }
+        .search-container button {
+            background: #ff5a5f;
+            color: white;
+            border: none;
+            padding: 0.75rem 2rem;
+            font-size: 1rem;
+            font-weight: bold;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .search-container button:hover {
+            background: #e04b50;
+        }
 
-    /* LANGUAGE TOGGLE CONTROL */
-    [lang="my"] {
-      display: none;
-    }
+        /* CITY FILTER LAYER SYSTEM */
+        .filter-section {
+            padding: 4rem 2rem 2rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .section-title {
+            font-size: 2rem;
+            color: #1e293b;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+        .filter-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+        .filter-btn {
+            background-color: #ffffff;
+            border: 1px solid #cbd5e1;
+            padding: 10px 24px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.25s ease;
+            color: #475569;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+        }
+        .filter-btn:hover {
+            background-color: #f1f5f9;
+            color: #0f172a;
+        }
+        .filter-btn.active {
+            background-color: #ff5a5f;
+            color: white;
+            border-color: #ff5a5f;
+            box-shadow: 0 4px 12px rgba(255, 90, 95, 0.3);
+        }
 
-    /* PROPERTY CARDS GRID (FAZWAZ STYLE) */
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 2rem;
-    }
-    .card {
-      background: #ffffff;
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05), 0 2px 4px -1px rgba(0,0,0,0.03);
-      border: 1px solid #e2e8f0;
-      transition: transform 0.2s, box-shadow 0.2s;
-      position: relative;
-    }
-    .card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
-    }
-    .card-img-wrapper {
-      position: relative;
-    }
-    .card img {
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
-    }
-    .status-badge {
-      position: absolute;
-      top: 10px;
-      left: 10px;
-      background: #10b981;
-      color: white;
-      padding: 0.25rem 0.5rem;
-      font-size: 0.75rem;
-      font-weight: bold;
-      border-radius: 4px;
-    }
-    .card-content {
-      padding: 1.25rem;
-    }
-    .card .price {
-      font-size: 1.5rem;
-      font-weight: 700;
-      color: #1e3a8a;
-      margin-bottom: 0.1rem;
-    }
-    
-    /* NEW LOCATION STYLING */
-    .card .location {
-      font-size: 0.9rem;
-      color: #64748b;
-      margin-bottom: 0.5rem;
-      display: flex;
-      align-items: center;
-      gap: 0.25rem;
-    }
-    
-    .card h3 {
-      font-size: 1.1rem;
-      color: #334155;
-      margin-bottom: 0.5rem;
-    }
-    
-    /* FAZWAZ AMENITIES ICONS ROW */
-    .amenities {
-      display: flex;
-      gap: 1rem;
-      border-top: 1px solid #f1f5f9;
-      padding-top: 0.75rem;
-      margin-top: 0.75rem;
-      color: #64748b;
-      font-size: 0.85rem;
-    }
-    .amenity-item {
-      display: flex;
-      align-items: center;
-      gap: 0.25rem;
-    }
+        /* PROPERTY CARDS GRID */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem 4rem 2rem;
+        }
+        .property-card {
+            background: #ffffff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05), 0 2px 4px -1px rgba(0,0,0,0.03);
+            border: 1px solid #e2e8f0;
+            position: relative;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .property-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        .badge {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            z-index: 1;
+        }
+        .badge.new { background: #10b981; }
+        .badge.hot { background: #ef4444; }
+        .badge.scenic { background: #3b82f6; }
+        
+        .property-card img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+        }
+        .card-content {
+            padding: 20px;
+            text-align: left;
+        }
+        .price {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #2563eb;
+            margin-bottom: 8px;
+        }
+        .location {
+            color: #64748b;
+            font-size: 0.9rem;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+        .card-content h3 {
+            font-size: 1.15rem;
+            margin-bottom: 12px;
+            color: #1e293b;
+        }
+        .amenities {
+            color: #475569;
+            font-size: 0.9rem;
+            border-top: 1px solid #f1f5f9;
+            padding-top: 12px;
+            margin-top: 12px;
+        }
 
-    /* ABOUT US SECTION */
-    #about {
-      background: #ffffff;
-      border-top: 1px solid #e2e8f0;
-      border-bottom: 1px solid #e2e8f0;
-      max-width: 100%;
-    }
-    .about-content {
-      max-width: 800px;
-      margin: 0 auto;
-      text-align: center;
-    }
+        /* ABOUT SECTION */
+        .about-section {
+            background: #ffffff;
+            padding: 5rem 2rem;
+            text-align: center;
+            border-top: 1px solid #e2e8f0;
+        }
+        .about-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .about-container p {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: #475569;
+        }
 
-    /* CONTACT SECTION */
-    #contact {
-      text-align: center;
-    }
-    .contact-btn {
-      display: inline-block;
-      background: #1e3a8a;
-      color: white;
-      padding: 0.75rem 2rem;
-      text-decoration: none;
-      font-weight: 600;
-      border-radius: 8px;
-      margin-top: 1rem;
-    }
+        /* FOOTER */
+        footer {
+            background: #0f172a;
+            color: #94a3b8;
+            padding: 2rem;
+            text-align: center;
+            font-size: 0.9rem;
+        }
 
-    /* FOOTER */
-    footer {
-      text-align: center;
-      padding: 2rem;
-      background: #0f172a;
-      color: #94a3b8;
-      font-size: 0.9rem;
-    }
-  </style>
+        /* LANGUAGE TOGGLE SYSTEM */
+        [lang="my"] {
+            display: none;
+        }
+    </style>
 </head>
 <body>
 
-  <nav>
-    <a href="#home" class="logo">Modern<span>Kingdom</span></a>
-    <div class="nav-links">
-      <span lang="en">
-        <a href="#properties">Buy</a>
-        <a href="#about">About</a>
-        <a href="#contact">Contact</a>
-      </span>
-      <span lang="my">
-        <a href="#properties">ဝယ်ရန်</a>
-        <a href="#about">ကျွန်ုပ်တို့အကြောင်း</a>
-        <a href="#contact">ဆက်သွယ်ရန်</a>
-      </span>
-      <button class="lang-switch-btn" id="langBtn" onclick="toggleLanguage()">မြန်မာ</button>
-    </div>
-  </nav>
+    <nav>
+        <div class="logo">Modern Kingdom</div>
+        <ul class="nav-links">
+            <li>
+                <a href="#" lang="en">Home</a>
+                <a href="#" lang="my">ပင်မစာမျက်နှာ</a>
+            </li>
+            <li>
+                <a href="#" lang="en">Properties</a>
+                <a href="#" lang="my">အိမ်ခြံမြေများ</a>
+            </li>
+            <li>
+                <a href="#" lang="en">About</a>
+                <a href="#" lang="my">ကျွန်ုပ်တို့အကြောင်း</a>
+            </li>
+            <li>
+                <button class="lang-switch-btn" onclick="toggleLanguage()">မြန်မာ</button>
+            </li>
+        </ul>
+    </nav>
 
-  <header id="home">
-    <div lang="en">
-      <h1>Find Your Dream Home</h1>
-      <p>Search real estate listings for sale and rent in your ideal location.</p>
-    </div>
-    <div lang="my">
-      <h1>စိတ်ကူးအိမ်မက်နေအိမ်ကို ရှာဖွေပါ</h1>
-      <p>သင်နှစ်သက်ရာ အချက်အချာကျသော နေရာများရှိ ရောင်းရန်နှင့် ငှားရန်ရှိသော အိမ်ခြံမြေများကို ရှာဖွေပါ။</p>
-    </div>
-    
-    <div class="search-container">
-      <input type="text" placeholder="Enter location, project or developer..." id="searchInput">
-      <button onclick="alert('Search feature simulation')">Search</button>
-    </div>
-  </header>
-
-  <section id="properties">
-    <h2 class="section-title">
-      <span lang="en">Featured Properties for Sale</span>
-      <span lang="my">ရောင်းရန်ရှိသော အထူးအိမ်ခြံမြေများ</span>
-    </h2>
-    
-    <div class="grid">
-      
-      <div class="card">
-        <div class="card-img-wrapper">
-          <span class="status-badge">New</span>
-          <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=600&q=80" alt="Office">
+    <header>
+        <h1 lang="en">Find Your Dream Property in Myanmar</h1>
+        <h1 lang="my">မြန်မာနိုင်ငံရှိ သင်နှစ်သက်မည့် အိမ်ခြံမြေများကို ရှာဖွေပါ</h1>
+        
+        <p lang="en">Discover commercial spaces, luxury villas, and smart homes nationwide.</p>
+        <p lang="my">လူကြီးမင်းတို့စိတ်ကြိုက် ကူးသန်းရောင်းဝယ်ရေးနေရာများ၊ ဇိမ်ခံဗီလာများနှင့် ခေတ်မီအိမ်ရာများကို ရှာဖွေလိုက်ပါ။</p>
+        
+        <div class="search-container">
+            <input type="text" placeholder="Search by location, township..." lang="en">
+            <input type="text" placeholder="မြို့နယ်၊ တည်နေရာဖြင့် ရှာဖွေရန်..." lang="my">
+            <button lang="en">Search</button>
+            <button lang="my">ရှာဖွေရန်</button>
         </div>
-        <div class="card-content">
-          <p class="price"><span lang="en">$135,000</span><span lang="my">$၁၃၅,၀၀၀</span></p>
-          
-          <div class="location">
-            📍 <span lang="en">Kamayut Township, Yangon</span>
-            <span lang="my">ကမာရွတ်မြို့နယ်၊ ရန်ကုန်</span>
-          </div>
+    </header>
 
-          <h3><span lang="en">Modern Commercial Office Space</span><span lang="my">ခေတ်မီ စီးပွားရေးလုပ်ငန်းသုံး ရုံးခန်းနေရာ</span></h3>
-          <div class="amenities">
-            <div class="amenity-item">🛏️ <span>0 Beds</span></div>
-            <div class="amenity-item">🛁 <span>2 Baths</span></div>
-            <div class="amenity-item">📐 <span>120 SqM</span></div>
-          </div>
+    <section class="filter-section">
+        <h2 class="section-title" lang="en">Featured Properties for Sale</h2>
+        <h2 class="section-title" lang="my">ရောင်းရန်ရှိသော အထူးအိမ်ခြံမြေများ</h2>
+        
+        <div class="filter-tabs">
+            <button class="filter-btn active" onclick="filterCity('all')" data-city-btn="all">
+                <span lang="en">All Cities</span><span lang="my">မြို့အားလုံး</span>
+            </button>
+            <button class="filter-btn" onclick="filterCity('yangon')" data-city-btn="yangon">
+                <span lang="en">Yangon</span><span lang="my">ရန်ကုန်</span>
+            </button>
+            <button class="filter-btn" onclick="filterCity('mandalay')" data-city-btn="mandalay">
+                <span lang="en">Mandalay</span><span lang="my">မန္တလေး</span>
+            </button>
+            <button class="filter-btn" onclick="filterCity('naypyitaw')" data-city-btn="naypyitaw">
+                <span lang="en">Naypyitaw</span><span lang="my">နေပြည်တော်</span>
+            </button>
+            <button class="filter-btn" onclick="filterCity('taunggyi')" data-city-btn="taunggyi">
+                <span lang="en">Taunggyi</span><span lang="my">တောင်ကြီး</span>
+            </button>
         </div>
-      </div>
+    </section>
 
-      <div class="card">
-        <div class="card-img-wrapper">
-          <span class="status-badge">Hot</span>
-          <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=600&q=80" alt="Apartment">
+    <div class="grid" id="propertyGrid">
+        
+        <div class="property-card" data-city="yangon">
+            <span class="badge new" lang="en">New</span>
+            <span class="badge new" lang="my">အသစ်</span>
+            <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=600&q=80" alt="Office Space">
+            <div class="card-content">
+                <p class="price">$135,000</p>
+                <p class="location">📍 Kamayut Township, Yangon</p>
+                <h3 lang="en">Modern Commercial Office Space</h3>
+                <h3 lang="my">ခေတ်မီ ကူးသန်းရောင်းဝယ်ရေး ရုံးခန်းနေရာ</h3>
+                <p class="amenities">🛏️ 0 Beds | 🛁 2 Baths | 📐 120 SqM</p>
+            </div>
         </div>
-        <div class="card-content">
-          <p class="price"><span lang="en">$350,000</span><span lang="my">$၃၅၀,၀၀၀</span></p>
-          
-          <div class="location">
-            📍 <span lang="en">Yankin Township, Yangon</span>
-            <span lang="my">ရန်ကင်းမြို့နယ်၊ ရန်ကုန်</span>
-          </div>
 
-          <h3><span lang="en">Luxury Downtown Apartment</span><span lang="my">မြို့လယ်ခေါင် ဇိမ်ခံကွန်ဒိုတိုက်ခန်း</span></h3>
-          <div class="amenities">
-            <div class="amenity-item">🛏️ <span>2 Beds</span></div>
-            <div class="amenity-item">🛁 <span>2 Baths</span></div>
-            <div class="amenity-item">📐 <span>85 SqM</span></div>
-          </div>
+        <div class="property-card" data-city="yangon">
+            <span class="badge hot" lang="en">Hot</span>
+            <span class="badge hot" lang="my">အဝယ်လိုက်</span>
+            <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=600&q=80" alt="Apartment">
+            <div class="card-content">
+                <p class="price">$350,000</p>
+                <p class="location">📍 Yankin Township, Yangon</p>
+                <h3 lang="en">Luxury Downtown Apartment</h3>
+                <h3 lang="my">မြို့လယ်ရှိ ဇိမ်ခံကွန်ဒို တိုက်ခန်း</h3>
+                <p class="amenities">🛏️ 2 Beds | 🛁 2 Baths | 📐 85 SqM</p>
+            </div>
         </div>
-      </div>
 
-      <div class="card">
-        <div class="card-img-wrapper">
-          <span class="status-badge">New</span>
-          <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=600&q=80" alt="Home">
+        <div class="property-card" data-city="mandalay">
+            <span class="badge new" lang="en">New</span>
+            <span class="badge new" lang="my">အသစ်</span>
+            <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=600&q=80" alt="Smart Home">
+            <div class="card-content">
+                <p class="price">$525,000</p>
+                <p class="location">📍 Chanayethazan, Mandalay</p>
+                <h3 lang="en">Exclusive Family Smart Home</h3>
+                <h3 lang="my">သီးသန့် စမတ်နည်းပညာသုံး မိသားစုအိမ်ရာ</h3>
+                <p class="amenities">🛏️ 4 Beds | 🛁 3 Baths | 📐 240 SqM</p>
+            </div>
         </div>
-        <div class="card-content">
-          <p class="price"><span lang="en">$525,000</span><span lang="my">$၅၂၅,၀၀၀</span></p>
-          
-          <div class="location">
-            📍 <span lang="en">Chanayethazan, Mandalay</span>
-            <span lang="my">ချမ်းအေးသာစံမြို့နယ်၊ မန္တလေး</span>
-          </div>
 
-          <h3><span lang="en">Exclusive Family Smart Home</span><span lang="my">ခေတ်မီနည်းပညာသုံး မိသားစုအိမ်ရာ</span></h3>
-          <div class="amenities">
-            <div class="amenity-item">🛏️ <span>4 Beds</span></div>
-            <div class="amenity-item">🛁 <span>3 Baths</span></div>
-            <div class="amenity-item">📐 <span>240 SqM</span></div>
-          </div>
+        <div class="property-card" data-city="naypyitaw">
+            <span class="badge new" lang="en">New</span>
+            <span class="badge new" lang="my">အသစ်</span>
+            <img src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&w=600&q=80" alt="Luxury Villa">
+            <div class="card-content">
+                <p class="price">$420,000</p>
+                <p class="location">📍 Ottarathiri Township, Naypyitaw</p>
+                <h3 lang="en">Modern Capital Luxury Villa</h3>
+                <h3 lang="my">မြို့တော်ရှိ ခေတ်မီ အဆင့်မြင့် ဇိမ်ခံဗီလာ</h3>
+                <p class="amenities">🛏️ 5 Beds | 🛁 4 Baths | 📐 310 SqM</p>
+            </div>
         </div>
-      </div>
+
+        <div class="property-card" data-city="taunggyi">
+            <span class="badge scenic" lang="en">Scenic</span>
+            <span class="badge scenic" lang="my">ရှုခင်းလှ</span>
+            <img src="https://images.unsplash.com/photo-1506974210756-8e1b8985d348?auto=format&fit=crop&w=600&q=80" alt="Mountain House">
+            <div class="card-content">
+                <p class="price">$280,000</p>
+                <p class="location">📍 Near Inle Lake Highway, Taunggyi</p>
+                <h3 lang="en">Beautiful Mountain View Residence</h3>
+                <h3 lang="my">သာယာလှပသော တောင်တန်းရှုခင်းပါ အိမ်ရာ</h3>
+                <p class="amenities">🛏️ 3 Beds | 🛁 2.5 Baths | 📐 180 SqM</p>
+            </div>
+        </div>
 
     </div>
-  </section>
 
-  <section id="about">
-    <div class="about-content">
-      <div lang="en">
-        <h2 class="section-title">Why Modern Kingdom?</h2>
-        <p>We combine localized market expertise with top-tier technology frameworks to optimize your buying, leasing, or commercial real estate investment journey.</p>
-      </div>
-      <div lang="my">
-        <h2 class="section-title">ဘာကြောင့် ကျွန်ုပ်တို့ကို ရွေးချယ်သင့်လဲ။</h2>
-        <p>ကျွန်ုပ်တို့သည် ဒေသတွင်း အိမ်ခြံမြေဈေးကွက်ကျွမ်းကျင်မှုနှင့် ခေတ်မီနည်းပညာစနစ်များကို ပေါင်းစပ်ပြီး သင်၏ အိမ်ခြံမြေဝယ်ယူမှု၊ ငှားရမ်းမှုနှင့် ရင်းနှီးမြှုပ်နှံမှုခရီးစဉ်ကို အကောင်းမွန်ဆုံး ကူညီပံ့ပိုးပေးနေပါသည်။</p>
-      </div>
-    </div>
-  </section>
+    <section class="about-section">
+        <div class="about-container">
+            <h2 class="section-title" lang="en">About Modern Kingdom</h2>
+            <h2 class="section-title" lang="my">Modern Kingdom အကြောင်း</h2>
+            <p lang="en">We are dedicated to connecting buyers and investors with exceptional premium real estate opportunities across Myanmar's major economic hubs.</p>
+            <p lang="my">ကျွန်ုပ်တို့သည် ဝယ်ယူသူများနှင့် ရင်းနှီးမြှုပ်နှံသူများကို မြန်မာနိုင်ငံတစ်ဝှမ်းရှိ အဓိကစီးပွားရေးမြို့ကြီးများမှ အကောင်းမွန်ဆုံးသော အိမ်ခြံမြေအခွင့်အလမ်းများနှင့် ချိတ်ဆက်ပေးနေပါသည်။</p>
+        </div>
+    </section>
 
-  <section id="contact">
-    <h2 class="section-title"><span lang="en">Talk to our Agents</span><span lang="my">အကျိုးဆောင်များနှင့် ဆက်သွယ်ပါ</span></h2>
-    <p><span lang="en">Have questions? Get customized advice from our local property experts.</span><span lang="my">မေးမြန်းလိုသည်များ ရှိပါက ကျွန်ုပ်တို့၏ အိမ်ခြံမြေကျွမ်းကျင်သူများနှင့် တိုက်ရိုက်ဆွေးနွေးနိုင်ပါသည်။</span></p>
-    <a href="mailto:info@modernkingdomrealestate.com" class="contact-btn"><span lang="en">Contact Us</span><span lang="my">ဆက်သွယ်ရန်</span></a>
-  </section>
+    <footer>
+        <p>&copy; 2026 Modern Kingdom Real Estate. All rights reserved.</p>
+    </footer>
 
-  <footer>
-    <p>&copy; 2026 Modern Kingdom Real Estate. All Rights Reserved.</p>
-  </footer>
+    <script>
+        let currentLang = 'en';
 
-  <script>
-    let currentLang = 'en';
+        // 1. DYNAMIC CITY FILTER FUNCTION
+        function filterCity(selectedCity) {
+            // Update active state class on filter buttons
+            const buttons = document.querySelectorAll('.filter-btn');
+            buttons.forEach(btn => {
+                if (btn.getAttribute('data-city-btn') === selectedCity) {
+                    btn.classList.add('active');
+                } else {
+                    btn.classList.remove('active');
+                }
+            });
 
-    function toggleLanguage() {
-      const enElements = document.querySelectorAll('[lang="en"]');
-      const myElements = document.querySelectorAll('[lang="my"]');
-      const btn = document.getElementById('langBtn');
-
-      if (currentLang === 'en') {
-        enElements.forEach(el => el.style.display = 'none');
-        myElements.forEach(el => {
-          if (el.tagName === 'SPAN' || el.tagName === 'A') {
-            el.style.display = 'inline';
-          } else {
-            el.style.display = 'block';
-          }
-        });
-        btn.innerText = 'English';
-        currentLang = 'my';
-      } else {
-        enElements.forEach(el => {
-          if (el.tagName === 'SPAN' || el.tagName === 'A') {
-            el.style.display = 'inline';
-          } else {
-            el.style.display = 'block';
-          }
-        });
-        myElements.forEach(el => el.style.display = 'none');
-        btn.innerText = 'မြန်မာ';
-        currentLang = 'en';
-      }
-    }
-  </script>
-
-</body>
-</html>
+            // Smooth dynamic card visual filter layer logic
+            const cards = document.querySelectorAll('.property-card');
+            cards.forEach
