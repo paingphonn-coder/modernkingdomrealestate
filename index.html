@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Modern Kingdom Real Estate</title>
+    
     <style>
         /* BASE STYLES */
         * {
@@ -121,7 +121,7 @@
             background: #e04b50;
         }
 
-        /* CITY FILTER LAYER SYSTEM */
+        /* CITY FILTER SYSTEM STYLES */
         .filter-section {
             padding: 4rem 2rem 2rem 2rem;
             max-width: 1200px;
@@ -427,6 +427,52 @@
                 }
             });
 
-            // Smooth dynamic card visual filter layer logic
+            // Smooth dynamic card layer filtering
             const cards = document.querySelectorAll('.property-card');
-            cards.forEach
+            cards.forEach(card => {
+                const cardCity = card.getAttribute('data-city');
+                if (selectedCity === 'all' || cardCity === selectedCity) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        // 2. BILINGUAL LANGUAGE SWITCHER FUNCTION
+        function toggleLanguage() {
+            const enElements = document.querySelectorAll('[lang="en"]');
+            const myElements = document.querySelectorAll('[lang="my"]');
+            const langBtn = document.querySelector('.lang-switch-btn');
+
+            if (currentLang === 'en') {
+                enElements.forEach(el => el.style.display = 'none');
+                myElements.forEach(el => {
+                    if (el.tagName === 'SPAN' && el.parentElement.classList.contains('filter-btn')) {
+                        el.style.display = 'inline';
+                    } else {
+                        el.style.display = 'block';
+                    }
+                });
+                langBtn.textContent = 'English';
+                currentLang = 'my';
+            } else {
+                myElements.forEach(el => el.style.display = 'none');
+                enElements.forEach(el => {
+                    if (el.tagName === 'SPAN' && el.parentElement.classList.contains('filter-btn')) {
+                        el.style.display = 'inline';
+                    } else {
+                        el.style.display = 'block';
+                    }
+                });
+                langBtn.textContent = 'မြန်မာ';
+                currentLang = 'en';
+            }
+            
+            // Re-apply current active city layer after shifting language views
+            const activeCityBtn = document.querySelector('.filter-btn.active').getAttribute('data-city-btn');
+            filterCity(activeCityBtn);
+        }
+    </script>
+</body>
+</html>
