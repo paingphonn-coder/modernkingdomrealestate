@@ -3,10 +3,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Modern Kingdom Real Estate</title>
-    </head>
-<body>
-
     <script src="//code.tidio.co/dhiskbujv3owbroejoswgj3aq8odtphh.js" async></script>
+    
     <style>
         /* BASE STYLES */
         * {
@@ -18,6 +16,7 @@
         body {
             background: #f8fafc;
             color: #334155;
+            padding-top: 70px;
         }
 
         /* NAVIGATION BAR */
@@ -69,15 +68,14 @@
 
         /* HERO SEARCH SECTION */
         header {
-            height: 60vh;
+            min-height: 65vh;
             background: linear-gradient(rgba(15, 23, 42, 0.6), rgba(15, 23, 42, 0.6)), url('https://images.unsplash.com/photo-1564013799919-ab600027ffc6?auto=format&fit=crop&w=1920&q=80') no-repeat center center / cover;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
-            padding: 0 1rem;
-            margin-top: 50px;
+            padding: 2rem 1rem;
         }
         header h1 {
             font-size: 2.75rem;
@@ -91,36 +89,71 @@
             margin-bottom: 2rem;
         }
 
-        /* SEARCH BAR COMPONENT */
+        /* DYNAMIC ADVANCED FILTER CONTAINER */
         .search-container {
             background: #ffffff;
-            padding: 0.5rem;
-            border-radius: 50px;
-            display: flex;
+            padding: 1.5rem;
+            border-radius: 16px;
             width: 100%;
-            max-width: 700px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            max-width: 850px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
         }
-        .search-container input {
-            flex: 1;
-            border: none;
-            padding: 0.75rem 1.5rem;
-            font-size: 1rem;
-            border-radius: 50px;
+        .filter-form {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr auto;
+            gap: 1rem;
+            align-items: flex-end;
+        }
+        @media (max-width: 768px) {
+            .filter-form {
+                grid-template-columns: 1fr;
+            }
+        }
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+            text-align: left;
+        }
+        .form-group label {
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #64748b;
+        }
+        .form-group select, .form-group input {
+            width: 100%;
+            padding: 0.75rem;
+            font-size: 0.95rem;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
             outline: none;
+            background-color: #ffffff;
+            color: #334155;
+            transition: border-color 0.2s;
         }
-        .search-container button {
+        .form-group select:focus, .form-group input:focus {
+            border-color: #1e3a8a;
+        }
+        .form-group select:disabled {
+            background-color: #f1f5f9;
+            color: #94a3b8;
+            cursor: not-allowed;
+        }
+        .search-container button.search-btn {
             background: #ff5a5f;
             color: white;
             border: none;
             padding: 0.75rem 2rem;
             font-size: 1rem;
             font-weight: bold;
-            border-radius: 50px;
+            border-radius: 8px;
             cursor: pointer;
+            height: 46px;
             transition: background 0.2s;
         }
-        .search-container button:hover {
+        .search-container button.search-btn:hover {
             background: #e04b50;
         }
 
@@ -362,10 +395,40 @@
         <p lang="my">လူကြီးမင်းတို့စိတ်ကြိုက် ကူးသန်းရောင်းဝယ်ရေးနေရာများ၊ ဇိမ်ခံဗီလာများနှင့် ခေတ်မီအိမ်ရာများကို ရှာဖွေလိုက်ပါ။</p>
         
         <div class="search-container">
-            <input type="text" id="searchInput" placeholder="Search by location, township..." lang="en" onkeyup="searchProperties()">
-            <input type="text" id="searchInputMy" placeholder="မြို့နယ်၊ တည်နေရာဖြင့် ရှာဖွေရန်..." lang="my" onkeyup="searchProperties()">
-            <button lang="en" onclick="searchProperties()">Search</button>
-            <button lang="my" onclick="searchProperties()">ရှာဖွေရန်</button>
+            <form class="filter-form" id="searchEngineForm" onsubmit="executeLocationSearch(event)">
+                <div class="form-group">
+                    <label for="regionField">
+                        <span lang="en">State / Region</span>
+                        <span lang="my">ပြည်နယ် / တိုင်း</span>
+                    </label>
+                    <select id="regionField" required>
+                        <option value="" disabled selected>Select Region...</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="cityField">
+                        <span lang="en">City / Town</span>
+                        <span lang="my">မြို့ကြီးများ</span>
+                    </label>
+                    <select id="cityField" disabled required>
+                        <option value="" disabled selected>Select Region First</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="neighborhoodField">
+                        <span lang="en">Township / Ward</span>
+                        <span lang="my">မြို့နယ် / ရပ်ကွက်</span>
+                    </label>
+                    <input type="text" id="neighborhoodField" placeholder="e.g., Kamayut Township" required>
+                </div>
+
+                <button type="submit" class="search-btn">
+                    <span lang="en">Search</span>
+                    <span lang="my">ရှာဖွေရန်</span>
+                </button>
+            </form>
         </div>
     </header>
 
@@ -807,7 +870,7 @@
             <h2 class="section-title" lang="en">About Modern Kingdom</h2>
             <h2 class="section-title" lang="my">Modern Kingdom အကြောင်း</h2>
             <p lang="en">We are dedicated to connecting buyers and investors with exceptional premium real estate opportunities across Myanmar's major economic hubs.</p>
-            <p lang="my">ကျွန်ုပ်တို့သည် ဝယ်ယူသူများနှင့် ရင်းနှီးမြှုပ်နှံသူများကို မြန်မာနိုင်ငံတစ်ဝှမ်းရှိ အဓိကစီးပွားရေးမြို့ကြီးများမှ အကောင်းမွန်ဆုံးသော အိမ်ခြံမြေအခွင့်အလမ်းများနှင့် ချိတ်ဆက်ပေးနေပါသည်။</p>
+            <p lang="my">ကျွန်ုပ်တို့သည် ဝယ်ယူသူများနှင့် ရင်းနှီးမြှုပ်နှံသူများကို မြန်မာနိုင်ငံတစ်ဝှမ်းရှိ အဓိကစီးပွားရေးမြို့ကြီးများမှ အကောင်းမွန်ဆုံးသော အိမ်ခြံမြေအခွင့်အလမ်းများနှင့် ချဆက်ပေးနေပါသည်။</p>
         </div>
     </section>
 
@@ -818,7 +881,82 @@
     <script>
         let currentLang = 'en';
 
-        // 1. DYNAMIC CITY FILTER FUNCTION
+        // COMPREHENSIVE MYANMAR GEOGRAPHY DATABASE
+        const myanmarLocationsDB = {
+            "Yangon Region": ["Yangon", "Thanlyin", "Thongwa", "Khayan", "Hlegu", "Taikkyi", "Twantay"],
+            "Mandalay Region": ["Mandalay", "Pyinoolwin", "Bagan", "Meiktila", "Myingyan", "Yamethin", "Mogoke"],
+            "Naypyidaw Union Territory": ["Naypyidaw", "Pyinmana", "Lewe", "Tatkon"],
+            "Shan State": ["Taunggyi", "Lashio", "Kengtung", "Tachileik", "Muse", "Kalaw", "Nyaungshwe", "Hsipaw"],
+            "Ayeyarwady Region": ["Pathein", "Hinthada", "Myaungmya", "Pyapon", "Maubin", "Bogale", "Ngwesaung", "Chaungtha"],
+            "Bago Region": ["Bago", "Pyay", "Taungoo", "Nyaunglebin", "Tharrawaddy"],
+            "Mon State": ["Mawlamyine", "Thaton", "Mudon", "Kyaikto", "Ye", "Thanbyuzayat"],
+            "Rakhine State": ["Sittwe", "Thandwe", "Mrauk-U", "Kyaukpyu", "Maungdaw"],
+            "Sagaing Region": ["Monywa", "Sagaing", "Shwebo", "Kale", "Katha", "Tamu"],
+            "Magway Region": ["Magway", "Pakokku", "Chauk", "Yenangyaung", "Taungdwingyi", "Minbu"],
+            "Tanintharyi Region": ["Dawei", "Myeik", "Kawthaung", "Bokpyin"],
+            "Kachin State": ["Myitkyina", "Bhamo", "Mogaung", "Hpakan", "Putao"],
+            "Kayin State": ["Hpa-An", "Myawaddy", "Kawkareik", "Thandaunggyi"],
+            "Chin State": ["Hakha", "Falam", "Tedim", "Mindat", "Matupi"],
+            "Kayah State": ["Loikaw", "Demoso", "Bawlakhe"]
+        };
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const regionDropdown = document.getElementById("regionField");
+            const cityDropdown = document.getElementById("cityField");
+
+            // Populate Regions Dropdown
+            Object.keys(myanmarLocationsDB).forEach(region => {
+                const opt = document.createElement("option");
+                opt.value = region;
+                opt.textContent = region;
+                regionDropdown.appendChild(opt);
+            });
+
+            // Handle Region Dependency Selection Switch
+            regionDropdown.addEventListener("change", (e) => {
+                const selectedRegion = e.target.value;
+                const relatedCities = myanmarLocationsDB[selectedRegion];
+
+                cityDropdown.innerHTML = '<option value="" disabled selected>Select City/Town...</option>';
+                cityDropdown.disabled = false;
+
+                relatedCities.forEach(city => {
+                    const opt = document.createElement("option");
+                    opt.value = city;
+                    opt.textContent = city;
+                    cityDropdown.appendChild(opt);
+                });
+            });
+        });
+
+        // HIERARCHICAL SEARCH INTERCEPTION ENGINE
+        function executeLocationSearch(event) {
+            event.preventDefault();
+            const selectedRegion = document.getElementById("regionField").value.toLowerCase();
+            const selectedCity = document.getElementById("cityField").value.toLowerCase();
+            const neighborhoodInput = document.getElementById("neighborhoodField").value.toLowerCase();
+
+            // Clear active styles on main page layout buttons to prioritize deeper filtering queries
+            const buttons = document.querySelectorAll('.filter-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            document.querySelector('[data-city-btn="all"]').classList.add('active');
+
+            const cards = document.querySelectorAll('.property-card');
+            cards.forEach(card => {
+                const cardText = card.textContent.toLowerCase();
+                const fitsRegion = cardText.includes(selectedRegion);
+                const fitsCity = cardText.includes(selectedCity);
+                const fitsNeighborhood = cardText.includes(neighborhoodInput);
+
+                if (fitsRegion || fitsCity || fitsNeighborhood) {
+                    card.style.removeProperty('display');
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        // DYNAMIC CITY FILTER FUNCTION
         function filterCity(selectedCity) {
             const buttons = document.querySelectorAll('.filter-btn');
             buttons.forEach(btn => {
@@ -840,26 +978,7 @@
             });
         }
 
-        // 2. INTERACTIVE SEARCH BAR LOGIC
-        function searchProperties() {
-            const query = (currentLang === 'en' ? document.getElementById('searchInput').value : document.getElementById('searchInputMy').value).toLowerCase();
-            const cards = document.querySelectorAll('.property-card');
-            
-            const buttons = document.querySelectorAll('.filter-btn');
-            buttons.forEach(btn => btn.classList.remove('active'));
-            document.querySelector('[data-city-btn="all"]').classList.add('active');
-
-            cards.forEach(card => {
-                const cardText = card.textContent.toLowerCase();
-                if (cardText.includes(query)) {
-                    card.style.display = 'block';
-                } else {
-                    card.style.display = 'none';
-                }
-            });
-        }
-
-        // 3. DYNAMIC LIVE COMMENT SYSTEM WITH EMAIL SENDING
+        // DYNAMIC LIVE COMMENT SYSTEM WITH EMAIL SENDING
         function submitComment(buttonElement) {
             const container = buttonElement.closest('.rating-comment-container');
             const inputs = container.querySelectorAll('.comment-form input');
@@ -882,7 +1001,6 @@
                     box.textContent = `"${commentText}"`;
                 });
 
-                // FORMTSPREE PIPELINE TO EMAIL INBOX
                 const formEndpoint = "https://formspree.io/f/meedgedj";
 
                 fetch(formEndpoint, {
@@ -912,7 +1030,7 @@
             }
         }
 
-        // 4. BILINGUAL LANGUAGE SWITCHER FUNCTION
+        // BILINGUAL LANGUAGE SWITCHER FUNCTION WITH DROPDOWN LABEL INTERACTION SUPPORT
         function toggleLanguage() {
             const enElements = document.querySelectorAll('[lang="en"]');
             const myElements = document.querySelectorAll('[lang="my"]');
@@ -922,6 +1040,10 @@
                 enElements.forEach(el => el.style.display = 'none');
                 myElements.forEach(el => {
                     if (el.tagName === 'SPAN' && el.parentElement.classList.contains('filter-btn')) {
+                        el.style.display = 'inline';
+                    } else if (el.tagName === 'SPAN' && el.parentElement.tagName === 'LABEL') {
+                        el.style.display = 'inline';
+                    } else if (el.tagName === 'SPAN' && el.parentElement.tagName === 'BUTTON') {
                         el.style.display = 'inline';
                     } else if (el.tagName === 'INPUT' && el.parentElement.classList.contains('comment-form')) {
                         el.style.display = 'block';
@@ -937,6 +1059,10 @@
                 myElements.forEach(el => el.style.display = 'none');
                 enElements.forEach(el => {
                     if (el.tagName === 'SPAN' && el.parentElement.classList.contains('filter-btn')) {
+                        el.style.display = 'inline';
+                    } else if (el.tagName === 'SPAN' && el.parentElement.tagName === 'LABEL') {
+                        el.style.display = 'inline';
+                    } else if (el.tagName === 'SPAN' && el.parentElement.tagName === 'BUTTON') {
                         el.style.display = 'inline';
                     } else if (el.tagName === 'INPUT' && el.parentElement.classList.contains('comment-form')) {
                         el.style.display = 'block';
