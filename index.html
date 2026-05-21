@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -358,7 +359,7 @@
             font-size: 0.9rem;
         }
 
-        /* LANGUAGE TOGGLE SYSTEM */
+        /* LANGUAGE TOGGLE SYSTEM SYSTEM GLOBAL RULES */
         [lang="my"] {
             display: none;
         }
@@ -397,7 +398,7 @@
         <div class="search-container">
             <form class="filter-form" id="searchEngineForm" onsubmit="executeLocationSearch(event)">
                 <div class="form-group">
-                    <label for="regionField">
+                    <label>
                         <span lang="en">State / Region</span>
                         <span lang="my">ပြည်နယ် / တိုင်း</span>
                     </label>
@@ -407,7 +408,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="cityField">
+                    <label>
                         <span lang="en">City / Town</span>
                         <span lang="my">မြို့ကြီးများ</span>
                     </label>
@@ -417,11 +418,11 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="neighborhoodField">
+                    <label>
                         <span lang="en">Township / Ward</span>
                         <span lang="my">မြို့နယ် / ရပ်ကွက်</span>
                     </label>
-                    <input type="text" id="neighborhoodField" placeholder="e.g., Kamayut Township" required>
+                    <input type="text" id="neighborhoodField" placeholder="e.g., Kamayut Township">
                 </div>
 
                 <button type="submit" class="search-btn">
@@ -881,7 +882,7 @@
     <script>
         let currentLang = 'en';
 
-        // COMPREHENSIVE MYANMAR GEOGRAPHY DATABASE
+        // COMPREHENSIVE NATIONWIDE GEOGRAPHY STORAGE
         const myanmarLocationsDB = {
             "Yangon Region": ["Yangon", "Thanlyin", "Thongwa", "Khayan", "Hlegu", "Taikkyi", "Twantay"],
             "Mandalay Region": ["Mandalay", "Pyinoolwin", "Bagan", "Meiktila", "Myingyan", "Yamethin", "Mogoke"],
@@ -900,54 +901,63 @@
             "Kayah State": ["Loikaw", "Demoso", "Bawlakhe"]
         };
 
+        // SETUP APPLICATION INTERACTION LISTENERS
         document.addEventListener("DOMContentLoaded", () => {
             const regionDropdown = document.getElementById("regionField");
             const cityDropdown = document.getElementById("cityField");
 
-            // Populate Regions Dropdown
-            Object.keys(myanmarLocationsDB).forEach(region => {
-                const opt = document.createElement("option");
-                opt.value = region;
-                opt.textContent = region;
-                regionDropdown.appendChild(opt);
-            });
-
-            // Handle Region Dependency Selection Switch
-            regionDropdown.addEventListener("change", (e) => {
-                const selectedRegion = e.target.value;
-                const relatedCities = myanmarLocationsDB[selectedRegion];
-
-                cityDropdown.innerHTML = '';
-                const defaultCityOpt = document.createElement("option");
-                defaultCityOpt.value = "";
-                defaultCityOpt.disabled = true;
-                defaultCityOpt.selected = true;
-                defaultCityOpt.id = "optSelectCity";
-                defaultCityOpt.textContent = currentLang === 'en' ? "Select City/Town..." : "မြို့ရွေးချယ်ရန်...";
-                cityDropdown.appendChild(defaultCityOpt);
-                
-                cityDropdown.disabled = false;
-
-                relatedCities.forEach(city => {
+            if (regionDropdown) {
+                // Seed administrative states/regions options dynamically
+                Object.keys(myanmarLocationsDB).forEach(region => {
                     const opt = document.createElement("option");
-                    opt.value = city.toLowerCase();
-                    opt.textContent = city;
-                    cityDropdown.appendChild(opt);
+                    opt.value = region;
+                    opt.textContent = region;
+                    regionDropdown.appendChild(opt);
                 });
-            });
+
+                // Set up dependency updates when changing region values
+                regionDropdown.addEventListener("change", (e) => {
+                    const selectedRegion = e.target.value;
+                    const relatedCities = myanmarLocationsDB[selectedRegion];
+
+                    if (cityDropdown) {
+                        cityDropdown.innerHTML = '';
+                        
+                        const defaultCityOpt = document.createElement("option");
+                        defaultCityOpt.value = "";
+                        defaultCityOpt.disabled = true;
+                        defaultCityOpt.selected = true;
+                        defaultCityOpt.id = "optSelectCity";
+                        defaultCityOpt.textContent = currentLang === 'en' ? "Select City/Town..." : "မြို့ရွေးချယ်ရန်...";
+                        
+                        cityDropdown.appendChild(defaultCityOpt);
+                        cityDropdown.disabled = false;
+
+                        relatedCities.forEach(city => {
+                            const opt = document.createElement("option");
+                            opt.value = city.toLowerCase();
+                            opt.textContent = city;
+                            cityDropdown.appendChild(opt);
+                        });
+                    }
+                });
+            }
         });
 
-        // HIERARCHICAL SEARCH INTERCEPTION ENGINE
+        // FORM SEARCH DISPATCH MATRIX
         function executeLocationSearch(event) {
             event.preventDefault();
             const selectedRegion = document.getElementById("regionField").value.toLowerCase();
             const selectedCity = document.getElementById("cityField").value.toLowerCase();
-            const neighborhoodInput = document.getElementById("neighborhoodField").value.toLowerCase();
+            const neighborhoodInput = document.getElementById("neighborhoodField").value.toLowerCase().trim();
 
+            // Clear visual focus states from lower-level static pill buttons
             const buttons = document.querySelectorAll('.filter-btn');
             buttons.forEach(btn => btn.classList.remove('active'));
-            document.querySelector('[data-city-btn="all"]').classList.add('active');
+            const allBtn = document.querySelector('[data-city-btn="all"]');
+            if (allBtn) allBtn.classList.add('active');
 
+            // Evaluate database matching metrics on all visual objects
             const cards = document.querySelectorAll('.property-card');
             cards.forEach(card => {
                 const cardRegion = (card.getAttribute('data-region') || '').toLowerCase();
@@ -959,14 +969,14 @@
                 const matchesTownship = cardTownship.includes(neighborhoodInput) || neighborhoodInput === "";
 
                 if (matchesRegion && matchesCity && matchesTownship) {
-                    card.style.removeProperty('display');
+                    card.style.display = 'block';
                 } else {
                     card.style.display = 'none';
                 }
             });
         }
 
-        // DYNAMIC CITY FILTER FUNCTION
+        // QUICK TAB PILL SELECTOR LOGIC
         function filterCity(selectedCity) {
             const buttons = document.querySelectorAll('.filter-btn');
             buttons.forEach(btn => {
@@ -979,16 +989,16 @@
 
             const cards = document.querySelectorAll('.property-card');
             cards.forEach(card => {
-                const cardCity = card.getAttribute('data-city');
-                if (selectedCity === 'all' || cardCity === selectedCity) {
-                    card.style.removeProperty('display');
+                const cardCity = (card.getAttribute('data-city') || '').toLowerCase();
+                if (selectedCity === 'all' || cardCity === selectedCity.toLowerCase()) {
+                    card.style.display = 'block';
                 } else {
                     card.style.display = 'none';
                 }
             });
         }
 
-        // DYNAMIC LIVE COMMENT SYSTEM WITH EMAIL SENDING
+        // FEEDBACK SYSTEM DISPATCH LOGIC
         function submitComment(buttonElement) {
             const container = buttonElement.closest('.rating-comment-container');
             const inputs = container.querySelectorAll('.comment-form input');
@@ -998,9 +1008,8 @@
             const propertyLocation = propertyCard.querySelector('.location').textContent;
 
             let commentText = "";
-            
             inputs.forEach(input => {
-                if(input.style.display !== 'none' && input.value.trim() !== "") {
+                if (input.style.display !== 'none' && input.value.trim() !== "") {
                     commentText = input.value.trim();
                 }
             });
@@ -1012,7 +1021,6 @@
                 });
 
                 const formEndpoint = "https://formspree.io/f/meedgedj";
-
                 fetch(formEndpoint, {
                     method: 'POST',
                     headers: {
@@ -1028,19 +1036,17 @@
                 .then(response => {
                     if (response.ok) {
                         alert(currentLang === 'en' ? "Comment posted and Gmail update sent!" : "မှတ်ချက်တင်ပြီးပါပြီ။");
-                    } else {
-                        console.error("Formspree response error");
                     }
                 })
                 .catch(error => {
-                    console.error("Network error sending notification:", error);
+                    console.error("Network interface pipeline error:", error);
                 });
 
                 inputs.forEach(input => input.value = "");
             }
         }
 
-        // BILINGUAL LANGUAGE SWITCHER FUNCTION WITH DROPDOWN LABEL INTERACTION SUPPORT
+        // BILINGUAL LANGUAGE SWITCHER MECHANISM
         function toggleLanguage() {
             const enElements = document.querySelectorAll('[lang="en"]');
             const myElements = document.querySelectorAll('[lang="my"]');
@@ -1052,11 +1058,7 @@
             if (currentLang === 'en') {
                 enElements.forEach(el => el.style.display = 'none');
                 myElements.forEach(el => {
-                    if (el.tagName === 'SPAN' && el.parentElement.classList.contains('filter-btn')) {
-                        el.style.display = 'inline';
-                    } else if (el.tagName === 'SPAN' && el.parentElement.tagName === 'LABEL') {
-                        el.style.display = 'inline';
-                    } else if (el.tagName === 'SPAN' && el.parentElement.tagName === 'BUTTON') {
+                    if (el.tagName === 'SPAN' && (el.parentElement.classList.contains('filter-btn') || el.parentElement.tagName === 'LABEL' || el.parentElement.tagName === 'BUTTON')) {
                         el.style.display = 'inline';
                     } else if (el.tagName === 'INPUT' && el.parentElement.classList.contains('comment-form')) {
                         el.style.display = 'block';
@@ -1067,23 +1069,18 @@
                     }
                 });
 
-                // Translate Dropdowns & Placeholders to Myanmar
-                if(neighborhoodField) neighborhoodField.placeholder = "ဥပမာ - ကမာရွတ်မြို့နယ်";
-                if(optSelectRegion && optSelectRegion.selected) optSelectRegion.textContent = "ပြည်နယ်/တိုင်း ရွေးချယ်ရန်...";
-                if(optSelectCity && optSelectCity.selected) {
+                if (neighborhoodField) neighborhoodField.placeholder = "ဥပမာ - ကမာရွတ်မြို့နယ်";
+                if (optSelectRegion) optSelectRegion.textContent = "ပြည်နယ်/တိုင်း ရွေးချယ်ရန်...";
+                if (optSelectCity) {
                     optSelectCity.textContent = document.getElementById('regionField').value ? "မြို့ရွေးချယ်ရန်..." : "ပြည်နယ်/တိုင်း အရင်ရွေးပါ";
                 }
 
-                langBtn.textContent = 'English';
+                if (langBtn) langBtn.textContent = 'English';
                 currentLang = 'my';
             } else {
                 myElements.forEach(el => el.style.display = 'none');
                 enElements.forEach(el => {
-                    if (el.tagName === 'SPAN' && el.parentElement.classList.contains('filter-btn')) {
-                        el.style.display = 'inline';
-                    } else if (el.tagName === 'SPAN' && el.parentElement.tagName === 'LABEL') {
-                        el.style.display = 'inline';
-                    } else if (el.tagName === 'SPAN' && el.parentElement.tagName === 'BUTTON') {
+                    if (el.tagName === 'SPAN' && (el.parentElement.classList.contains('filter-btn') || el.parentElement.tagName === 'LABEL' || el.parentElement.tagName === 'BUTTON')) {
                         el.style.display = 'inline';
                     } else if (el.tagName === 'INPUT' && el.parentElement.classList.contains('comment-form')) {
                         el.style.display = 'block';
@@ -1094,14 +1091,13 @@
                     }
                 });
 
-                // Translate Dropdowns & Placeholders to English
-                if(neighborhoodField) neighborhoodField.placeholder = "e.g., Kamayut Township";
-                if(optSelectRegion && optSelectRegion.selected) optSelectRegion.textContent = "Select Region...";
-                if(optSelectCity && optSelectCity.selected) {
+                if (neighborhoodField) neighborhoodField.placeholder = "e.g., Kamayut Township";
+                if (optSelectRegion) optSelectRegion.textContent = "Select Region...";
+                if (optSelectCity) {
                     optSelectCity.textContent = document.getElementById('regionField').value ? "Select City/Town..." : "Select Region First";
                 }
 
-                langBtn.textContent = 'မြန်မာ';
+                if (langBtn) langBtn.textContent = 'မြန်မာ';
                 currentLang = 'en';
             }
         }
