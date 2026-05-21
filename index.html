@@ -3,6 +3,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Modern Kingdom Real Estate</title>
+    
     <style>
         /* BASE STYLES */
         * {
@@ -210,7 +211,7 @@
             text-align: left;
         }
 
-        /* NEW RATING AND COMMENTS STYLES */
+        /* RATING AND COMMENTS STYLES */
         .rating-comment-container {
             padding: 12px 20px;
             background: #f8fafc;
@@ -223,7 +224,7 @@
             display: flex;
             align-items: center;
             gap: 4px;
-            color: #f59e0b; /* Yellow gold for stars */
+            color: #f59e0b;
             font-weight: 600;
             font-size: 0.95rem;
         }
@@ -237,6 +238,35 @@
             color: #64748b;
             font-style: italic;
             line-height: 1.4;
+            margin-bottom: 6px;
+        }
+
+        /* INTERACTIVE REVIEW INPUT FORM */
+        .comment-form {
+            display: flex;
+            gap: 6px;
+            margin-top: 4px;
+        }
+        .comment-form input {
+            flex: 1;
+            padding: 6px 12px;
+            font-size: 0.8rem;
+            border: 1px solid #cbd5e1;
+            border-radius: 4px;
+            outline: none;
+        }
+        .comment-form button {
+            background: #1e3a8a;
+            color: white;
+            border: none;
+            padding: 6px 12px;
+            font-size: 0.8rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+        .comment-form button:hover {
+            background: #1d4ed8;
         }
 
         .price {
@@ -329,10 +359,10 @@
         <p lang="my">လူကြီးမင်းတို့စိတ်ကြိုက် ကူးသန်းရောင်းဝယ်ရေးနေရာများ၊ ဇိမ်ခံဗီလာများနှင့် ခေတ်မီအိမ်ရာများကို ရှာဖွေလိုက်ပါ။</p>
         
         <div class="search-container">
-            <input type="text" placeholder="Search by location, township..." lang="en">
-            <input type="text" placeholder="မြို့နယ်၊ တည်နေရာဖြင့် ရှာဖွေရန်..." lang="my">
-            <button lang="en">Search</button>
-            <button lang="my">ရှာဖွေရန်</button>
+            <input type="text" id="searchInput" placeholder="Search by location, township..." lang="en" onkeyup="searchProperties()">
+            <input type="text" id="searchInputMy" placeholder="မြို့နယ်၊ တည်နေရာဖြင့် ရှာဖွေရန်..." lang="my" onkeyup="searchProperties()">
+            <button lang="en" onclick="searchProperties()">Search</button>
+            <button lang="my" onclick="searchProperties()">ရှာဖွေရန်</button>
         </div>
     </header>
 
@@ -372,6 +402,13 @@
                 </div>
                 <p class="featured-comment" lang="en">"Excellent central location, perfect for regional office setup."</p>
                 <p class="featured-comment" lang="my">"ရုံးခန်းဖွင့်ရန် အချက်အချာကျပြီး အလွန်ကောင်းမွန်သော နေရာဖြစ်ပါသည်။"</p>
+                
+                <div class="comment-form">
+                    <input type="text" placeholder="Add a comment..." lang="en">
+                    <input type="text" placeholder="မှတ်ချက်ပေးရန်..." lang="my">
+                    <button onclick="submitComment(this)" lang="en">Post</button>
+                    <button onclick="submitComment(this)" lang="my">တင်မည်</button>
+                </div>
             </div>
 
             <div class="card-content">
@@ -386,7 +423,7 @@
         <div class="property-card" data-city="yangon">
             <span class="badge hot" lang="en">Hot</span>
             <span class="badge hot" lang="my">အဝယ်လိုက်</span>
-            <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa1000?auto=format&fit=crop&w=600&q=80" alt="Apartment">
+            <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=600&q=80" alt="Apartment">
             
             <div class="rating-comment-container">
                 <div class="rating-stars">
@@ -394,6 +431,13 @@
                 </div>
                 <p class="featured-comment" lang="en">"Stunning interior finishings and panoramic view of Shwedagon Pagoda."</p>
                 <p class="featured-comment" lang="my">"အခန်းတွင်းပြင်ဆင်မှု ကောင်းမွန်ပြီး ရွှေတိဂုံဘုရားဗျူးကို မြင်တွေ့ရပါသည်။"</p>
+                
+                <div class="comment-form">
+                    <input type="text" placeholder="Add a comment..." lang="en">
+                    <input type="text" placeholder="မှတ်ချက်ပေးရန်..." lang="my">
+                    <button onclick="submitComment(this)" lang="en">Post</button>
+                    <button onclick="submitComment(this)" lang="my">တင်မည်</button>
+                </div>
             </div>
 
             <div class="card-content">
@@ -416,6 +460,13 @@
                 </div>
                 <p class="featured-comment" lang="en">"Automated lighting and top-tier security systems installed."</p>
                 <p class="featured-comment" lang="my">"အလိုအလျောက်မီးစနစ်နှင့် အဆင့်မြင့်လုံခြုံရေးစနစ်များ တပ်ဆင်ထားသည်။"</p>
+                
+                <div class="comment-form">
+                    <input type="text" placeholder="Add a comment..." lang="en">
+                    <input type="text" placeholder="မှတ်ချက်ပေးရန်..." lang="my">
+                    <button onclick="submitComment(this)" lang="en">Post</button>
+                    <button onclick="submitComment(this)" lang="my">တင်မည်</button>
+                </div>
             </div>
 
             <div class="card-content">
@@ -438,6 +489,13 @@
                 </div>
                 <p class="featured-comment" lang="en">"Massive yard space and highly secure government zone neighborhood."</p>
                 <p class="featured-comment" lang="my">"ခြံဝင်းကျယ်ဝန်းပြီး လုံခြုံမှုအပြည့်ရှိသော ဝန်ထမ်းအိမ်ရာဇုန်အနီး ဖြစ်သည်။"</p>
+                
+                <div class="comment-form">
+                    <input type="text" placeholder="Add a comment..." lang="en">
+                    <input type="text" placeholder="မှတ်ချက်ပေးရန်..." lang="my">
+                    <button onclick="submitComment(this)" lang="en">Post</button>
+                    <button onclick="submitComment(this)" lang="my">တင်မည်</button>
+                </div>
             </div>
 
             <div class="card-content">
@@ -460,6 +518,13 @@
                 </div>
                 <p class="featured-comment" lang="en">"Cool mountain breeze year-round. Perfect vacation residence destination."</p>
                 <p class="featured-comment" lang="my">"တစ်နှစ်ပတ်လုံးအေးမြပြီး အပန်းဖြေနားနေရန် အထူးသင့်လျော်ပါသည်။"</p>
+                
+                <div class="comment-form">
+                    <input type="text" placeholder="Add a comment..." lang="en">
+                    <input type="text" placeholder="မှတ်ချက်ပေးရန်..." lang="my">
+                    <button onclick="submitComment(this)" lang="en">Post</button>
+                    <button onclick="submitComment(this)" lang="my">တင်မည်</button>
+                </div>
             </div>
 
             <div class="card-content">
@@ -504,6 +569,26 @@
             cards.forEach(card => {
                 const cardCity = card.getAttribute('data-city');
                 if (selectedCity === 'all' || cardCity === selectedCity) {
+                    card.style.style.removeProperty('display'); // Keeps layout native
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        // 2. INTERACTIVE SEARCH BAR LOGIC
+        function searchProperties() {
+            const query = (currentLang === 'en' ? document.getElementById('searchInput').value : document.getElementById('searchInputMy').value).toLowerCase();
+            const cards = document.querySelectorAll('.property-card');
+            
+            // Turn off city active button filter when executing search keyword overrides
+            const buttons = document.querySelectorAll('.filter-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            document.querySelector('[data-city-btn="all"]').classList.add('active');
+
+            cards.forEach(card => {
+                const cardText = card.textContent.toLowerCase();
+                if (cardText.includes(query)) {
                     card.style.display = 'block';
                 } else {
                     card.style.display = 'none';
@@ -511,7 +596,29 @@
             });
         }
 
-        // 2. BILINGUAL LANGUAGE SWITCHER FUNCTION
+        // 3. DYNAMIC LIVE COMMENT SYSTEM
+        function submitComment(buttonElement) {
+            const container = buttonElement.closest('.rating-comment-container');
+            const inputs = container.querySelectorAll('.comment-form input');
+            let commentText = "";
+            
+            inputs.forEach(input => {
+                if(input.style.display !== 'none' && input.value.trim() !== "") {
+                    commentText = input.value.trim();
+                }
+            });
+
+            if (commentText !== "") {
+                const commentBox = container.querySelectorAll('.featured-comment');
+                commentBox.forEach(box => {
+                    box.textContent = `"${commentText}"`;
+                });
+                inputs.forEach(input => input.value = "");
+                alert(currentLang === 'en' ? "Thank you for your review!" : "မှတ်ချက်ပေးမှုအတွက် ကျေးဇူးတင်ပါသည်!");
+            }
+        }
+
+        // 4. BILINGUAL LANGUAGE SWITCHER FUNCTION
         function toggleLanguage() {
             const enElements = document.querySelectorAll('[lang="en"]');
             const myElements = document.querySelectorAll('[lang="my"]');
@@ -522,8 +629,10 @@
                 myElements.forEach(el => {
                     if (el.tagName === 'SPAN' && el.parentElement.classList.contains('filter-btn')) {
                         el.style.display = 'inline';
-                    } else if (el.classList.contains('featured-comment')) {
+                    } else if (el.tagName === 'INPUT' && el.parentElement.classList.contains('comment-form')) {
                         el.style.display = 'block';
+                    } else if (el.tagName === 'BUTTON' && el.parentElement.classList.contains('comment-form')) {
+                        el.style.display = 'inline-block';
                     } else {
                         el.style.display = 'block';
                     }
@@ -535,8 +644,10 @@
                 enElements.forEach(el => {
                     if (el.tagName === 'SPAN' && el.parentElement.classList.contains('filter-btn')) {
                         el.style.display = 'inline';
-                    } else if (el.classList.contains('featured-comment')) {
+                    } else if (el.tagName === 'INPUT' && el.parentElement.classList.contains('comment-form')) {
                         el.style.display = 'block';
+                    } else if (el.tagName === 'BUTTON' && el.parentElement.classList.contains('comment-form')) {
+                        el.style.display = 'inline-block';
                     } else {
                         el.style.display = 'block';
                     }
@@ -544,9 +655,6 @@
                 langBtn.textContent = 'မြန်မာ';
                 currentLang = 'en';
             }
-            
-            const activeCityBtn = document.querySelector('.filter-btn.active').getAttribute('data-city-btn');
-            filterCity(activeCityBtn);
         }
     </script>
 </body>
