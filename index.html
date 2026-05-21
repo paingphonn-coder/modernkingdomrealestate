@@ -3,7 +3,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Modern Kingdom Real Estate</title>
-    
     <style>
         /* BASE STYLES */
         * {
@@ -210,6 +209,36 @@
             padding: 20px;
             text-align: left;
         }
+
+        /* NEW RATING AND COMMENTS STYLES */
+        .rating-comment-container {
+            padding: 12px 20px;
+            background: #f8fafc;
+            border-bottom: 1px solid #e2e8f0;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+        .rating-stars {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            color: #f59e0b; /* Yellow gold for stars */
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+        .rating-score {
+            color: #475569;
+            font-size: 0.85rem;
+            margin-left: 4px;
+        }
+        .featured-comment {
+            font-size: 0.85rem;
+            color: #64748b;
+            font-style: italic;
+            line-height: 1.4;
+        }
+
         .price {
             font-size: 1.5rem;
             font-weight: bold;
@@ -336,6 +365,15 @@
             <span class="badge new" lang="en">New</span>
             <span class="badge new" lang="my">အသစ်</span>
             <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=600&q=80" alt="Office Space">
+            
+            <div class="rating-comment-container">
+                <div class="rating-stars">
+                    ⭐⭐⭐⭐⭐ <span class="rating-score">4.9 (18 reviews)</span>
+                </div>
+                <p class="featured-comment" lang="en">"Excellent central location, perfect for regional office setup."</p>
+                <p class="featured-comment" lang="my">"ရုံးခန်းဖွင့်ရန် အချက်အချာကျပြီး အလွန်ကောင်းမွန်သော နေရာဖြစ်ပါသည်။"</p>
+            </div>
+
             <div class="card-content">
                 <p class="price">$135,000</p>
                 <p class="location">📍 Kamayut Township, Yangon</p>
@@ -348,7 +386,16 @@
         <div class="property-card" data-city="yangon">
             <span class="badge hot" lang="en">Hot</span>
             <span class="badge hot" lang="my">အဝယ်လိုက်</span>
-            <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=600&q=80" alt="Apartment">
+            <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa1000?auto=format&fit=crop&w=600&q=80" alt="Apartment">
+            
+            <div class="rating-comment-container">
+                <div class="rating-stars">
+                    ⭐⭐⭐⭐★ <span class="rating-score">4.7 (32 reviews)</span>
+                </div>
+                <p class="featured-comment" lang="en">"Stunning interior finishings and panoramic view of Shwedagon Pagoda."</p>
+                <p class="featured-comment" lang="my">"အခန်းတွင်းပြင်ဆင်မှု ကောင်းမွန်ပြီး ရွှေတိဂုံဘုရားဗျူးကို မြင်တွေ့ရပါသည်။"</p>
+            </div>
+
             <div class="card-content">
                 <p class="price">$350,000</p>
                 <p class="location">📍 Yankin Township, Yangon</p>
@@ -362,6 +409,15 @@
             <span class="badge new" lang="en">New</span>
             <span class="badge new" lang="my">အသစ်</span>
             <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=600&q=80" alt="Smart Home">
+            
+            <div class="rating-comment-container">
+                <div class="rating-stars">
+                    ⭐⭐⭐⭐⭐ <span class="rating-score">5.0 (12 reviews)</span>
+                </div>
+                <p class="featured-comment" lang="en">"Automated lighting and top-tier security systems installed."</p>
+                <p class="featured-comment" lang="my">"အလိုအလျောက်မီးစနစ်နှင့် အဆင့်မြင့်လုံခြုံရေးစနစ်များ တပ်ဆင်ထားသည်။"</p>
+            </div>
+
             <div class="card-content">
                 <p class="price">$525,000</p>
                 <p class="location">📍 Chanayethazan, Mandalay</p>
@@ -375,6 +431,15 @@
             <span class="badge new" lang="en">New</span>
             <span class="badge new" lang="my">အသစ်</span>
             <img src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&w=600&q=80" alt="Luxury Villa">
+            
+            <div class="rating-comment-container">
+                <div class="rating-stars">
+                    ⭐⭐⭐⭐★ <span class="rating-score">4.6 (8 reviews)</span>
+                </div>
+                <p class="featured-comment" lang="en">"Massive yard space and highly secure government zone neighborhood."</p>
+                <p class="featured-comment" lang="my">"ခြံဝင်းကျယ်ဝန်းပြီး လုံခြုံမှုအပြည့်ရှိသော ဝန်ထမ်းအိမ်ရာဇုန်အနီး ဖြစ်သည်။"</p>
+            </div>
+
             <div class="card-content">
                 <p class="price">$420,000</p>
                 <p class="location">📍 Ottarathiri Township, Naypyitaw</p>
@@ -388,6 +453,15 @@
             <span class="badge scenic" lang="en">Scenic</span>
             <span class="badge scenic" lang="my">ရှုခင်းလှ</span>
             <img src="https://images.unsplash.com/photo-1506974210756-8e1b8985d348?auto=format&fit=crop&w=600&q=80" alt="Mountain House">
+            
+            <div class="rating-comment-container">
+                <div class="rating-stars">
+                    ⭐⭐⭐⭐⭐ <span class="rating-score">4.9 (24 reviews)</span>
+                </div>
+                <p class="featured-comment" lang="en">"Cool mountain breeze year-round. Perfect vacation residence destination."</p>
+                <p class="featured-comment" lang="my">"တစ်နှစ်ပတ်လုံးအေးမြပြီး အပန်းဖြေနားနေရန် အထူးသင့်လျော်ပါသည်။"</p>
+            </div>
+
             <div class="card-content">
                 <p class="price">$280,000</p>
                 <p class="location">📍 Near Inle Lake Highway, Taunggyi</p>
@@ -417,7 +491,6 @@
 
         // 1. DYNAMIC CITY FILTER FUNCTION
         function filterCity(selectedCity) {
-            // Update active state class on filter buttons
             const buttons = document.querySelectorAll('.filter-btn');
             buttons.forEach(btn => {
                 if (btn.getAttribute('data-city-btn') === selectedCity) {
@@ -427,7 +500,6 @@
                 }
             });
 
-            // Smooth dynamic card layer filtering
             const cards = document.querySelectorAll('.property-card');
             cards.forEach(card => {
                 const cardCity = card.getAttribute('data-city');
@@ -450,6 +522,8 @@
                 myElements.forEach(el => {
                     if (el.tagName === 'SPAN' && el.parentElement.classList.contains('filter-btn')) {
                         el.style.display = 'inline';
+                    } else if (el.classList.contains('featured-comment')) {
+                        el.style.display = 'block';
                     } else {
                         el.style.display = 'block';
                     }
@@ -461,6 +535,8 @@
                 enElements.forEach(el => {
                     if (el.tagName === 'SPAN' && el.parentElement.classList.contains('filter-btn')) {
                         el.style.display = 'inline';
+                    } else if (el.classList.contains('featured-comment')) {
+                        el.style.display = 'block';
                     } else {
                         el.style.display = 'block';
                     }
@@ -469,7 +545,6 @@
                 currentLang = 'en';
             }
             
-            // Re-apply current active city layer after shifting language views
             const activeCityBtn = document.querySelector('.filter-btn.active').getAttribute('data-city-btn');
             filterCity(activeCityBtn);
         }
