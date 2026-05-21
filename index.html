@@ -804,7 +804,7 @@
             <h2 class="section-title" lang="en">About Modern Kingdom</h2>
             <h2 class="section-title" lang="my">Modern Kingdom အကြောင်း</h2>
             <p lang="en">We are dedicated to connecting buyers and investors with exceptional premium real estate opportunities across Myanmar's major economic hubs.</p>
-            <p lang="my">ကျွန်ုပ်တို့သည် ဝယ်ယူသူများနှင့် ရင်းနှီးမြှုပ်နှံသူများကို မြန်မာနိုင်ငံတစ်ဝှမ်းရှိ အဓိကစီးပွားရေးမြို့ကြီးများမှ အကောင်းမွန်ဆုံးသော အိမ်ခြံမြေအခွင့်အလမ်းများနှင့် ချဆက်ပေးနေပါသည်။</p>
+            <p lang="my">ကျွန်ုပ်တို့သည် ဝယ်ယူသူများနှင့် ရင်းနှီးမြှုပ်နှံသူများကို မြန်မာနိုင်ငံတစ်ဝှမ်းရှိ အဓိကစီးပွားရေးမြို့ကြီးများမှ အကောင်းမွန်ဆုံးသော အိမ်ခြံမြေအခွင့်အလမ်းများနှင့် ချိတ်ဆက်ပေးနေပါသည်။</p>
         </div>
     </section>
 
@@ -856,10 +856,15 @@
             });
         }
 
-        // 3. DYNAMIC LIVE COMMENT SYSTEM
+        // 3. DYNAMIC LIVE COMMENT SYSTEM WITH EMAIL SENDING
         function submitComment(buttonElement) {
             const container = buttonElement.closest('.rating-comment-container');
             const inputs = container.querySelectorAll('.comment-form input');
+            
+            const propertyCard = buttonElement.closest('.property-card');
+            const propertyTitleEn = propertyCard.querySelector('h3[lang="en"]').textContent;
+            const propertyLocation = propertyCard.querySelector('.location').textContent;
+
             let commentText = "";
             
             inputs.forEach(input => {
@@ -873,8 +878,34 @@
                 commentBox.forEach(box => {
                     box.textContent = `"${commentText}"`;
                 });
+
+                // FORMTSPREE PIPELINE TO EMAIL INBOX
+                const formEndpoint = "https://formspree.io/f/meedgedj";
+
+                fetch(formEndpoint, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        PropertyName: propertyTitleEn,
+                        Location: propertyLocation,
+                        UserComment: commentText
+                    })
+                })
+                .then(response => {
+                    if (response.ok) {
+                        alert(currentLang === 'en' ? "Comment posted and Gmail update sent!" : "မှတ်ချက်တင်ပြီးပါပြီ။");
+                    } else {
+                        console.error("Formspree response error");
+                    }
+                })
+                .catch(error => {
+                    console.error("Network error sending notification:", error);
+                });
+
                 inputs.forEach(input => input.value = "");
-                alert(currentLang === 'en' ? "Thank you for your review!" : "မှတ်ချက်ပေးမှုအတွက် ကျေးဇူးတင်ပါသည်!");
             }
         }
 
