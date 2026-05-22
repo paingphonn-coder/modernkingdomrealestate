@@ -4,7 +4,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Modern Kingdom Real Estate</title>
     <script src="//code.tidio.co/dhiskbujv3owbroejoswgj3aq8odtphh.js" async></script>
-    
+    const express = require("express");
+const path = require("path");
+
+const app = express();
+const PORT = 3000;
+
+// Serve static frontend files
+app.use(express.static(path.join(__dirname, "public")));
+
+// Main route
+app.get("/", (req, res) => {
+    res.sendFile(path.join(__dirname, "public", "index.html"));
+});
+
+// Start server
+app.listen(PORT, () => {
+    console.log(`Server running at http://localhost:${PORT}`);
+});
     <style>
         /* BASE STYLES */
         * {
